@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">PrepOlymp</string>
+
+    <string name="problem_text">Текст задачи</string>
+    <string name="insert_ans">Ввести ответ</string>
+    <string name="check_button">Проверить</string>
+    <string name="problem_info">Информация о задаче</string>
+
+    <string name="problem_number">Задача № %d</string>
 </resources>
