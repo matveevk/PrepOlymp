@@ -3,22 +3,37 @@ package com.example.root.prepolymp;
 import java.util.ArrayList;
 
 public class Problem {
-    String text;
-    String ans;
-    int form;
-    String origins;
+    int id = 0;
+    String text = "Текст недоступен";
+    String ans = "";
+    int form = 9;
+    int diff = 3;
+    String origins = "Неизвестно";
 
     Problem() {
-        text = "";
-        ans = "";
-        form = 9;
-        origins = "Неизвестно";
     }
 
-    Problem(String text, String ans, int form) {
+    Problem(int id, String text, String ans, int form, int diff, String origins) {
+        this.id = id;
         this.text = text;
         this.ans = ans;
         this.form = form;
+        this.diff = diff;
+        this.origins = origins;
+    }
+
+    Problem(int id, String text, String ans, int form, int diff) {
+        this.id = id;
+        this.text = text;
+        this.ans = ans;
+        this.form = form;
+        this.diff = diff;
+    }
+
+    Problem(int id, String text, String ans) {
+        this.id = id;
+        this.text = text;
+        this.ans = ans;
     }
 
 }
