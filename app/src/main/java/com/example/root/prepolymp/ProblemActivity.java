@@ -14,7 +14,13 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class ProblemActivity extends AppCompatActivity {
+
+    public static final String EXTRA_MESSAGE = "com.example.root.prepolymp.MESSAGE";
+    public static ArrayList<Problem> problems= new ArrayList<>();
 
     // id, text, answer, form, difficulty, origins
 
@@ -22,8 +28,6 @@ public class ProblemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.problem_view);
-
-
         /*
         // stretching the linearLayout to what we need (and problemText)
         LinearLayout linearLayout = (LinearLayout)findViewById(R.id.linearLayoutProblemInfo);
@@ -34,18 +38,12 @@ public class ProblemActivity extends AppCompatActivity {
         tv.setWidth(width);
         */
 
-        Problem problem = new Problem(1, "Найдите наименьшее натуральное число, кратное 99, в десятичной записи которого участвуют только чётные цифры.", "228888");
+        Problem problem = new Problem(1, "Найдите наименьшее натуральное число, кратное 99, в десятичной записи которого участвуют только чётные цифры.", "228888", "алгебра");
+        problems.add(problem);
 
         showProblem(problem);
 
-        ImageButton infoImageButton = (ImageButton)findViewById(R.id.infoImageButton);
-        infoImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), ProblemInfo.class);
-                view.getContext().startActivity(intent);
-            }
-        });
+        openInfo(problem);
 
         checkAns(problem);
     }
@@ -55,6 +53,18 @@ public class ProblemActivity extends AppCompatActivity {
         problemText.setText(problem.text);
         TextView problemInfo = (TextView)findViewById(R.id.problemInfo);
         problemInfo.setText(getString(R.string.problem_data, problem.id, problem.form, problem.diff));
+    }
+
+    public void openInfo(final Problem problem) {
+        ImageButton infoImageButton = (ImageButton)findViewById(R.id.infoImageButton);
+        infoImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ProblemInfo.class);
+                intent.putExtra(EXTRA_MESSAGE, problem.id);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     public void checkAns(final Problem problem) {

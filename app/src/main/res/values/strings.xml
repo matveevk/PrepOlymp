@@ -6,7 +6,6 @@
     <string name="problem_info">Информация о задаче</string>
 
     <string name="problem_data" formatted="false">Задача № %d. Класс: %d. Сложность: %d</string>
-    <string name="title_activity_problem_info">ProblemInfo</string>
+    <string name="title_activity_problem_info">Информация о задаче</string>
 
-    <string name="problem_no">Новая активность запущена!</string>
 </resources>

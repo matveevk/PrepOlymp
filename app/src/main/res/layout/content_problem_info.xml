@@ -15,29 +15,102 @@
         android:layout_height="wrap_content"
         android:id="@+id/vertical_hl_1"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05" />
+        app:layout_constraintGuide_percent="0.05"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="19dp" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/vertical_hl_2"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95" />
+        app:layout_constraintGuide_percent="0.95"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="365dp" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/horizontal_hl_1"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.06"/>
+        app:layout_constraintGuide_percent="0.05"
+        tools:layout_editor_absoluteY="34dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/horizontal_hl_2"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1"
+        tools:layout_editor_absoluteY="34dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/horizontal_hl_3"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15"
+        tools:layout_editor_absoluteY="34dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/horizontal_hl_4"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2"
+        tools:layout_editor_absoluteY="34dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/horizontal_hl_5"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25"
+        tools:layout_editor_absoluteY="34dp"
+        tools:layout_editor_absoluteX="0dp" />
 
     <TextView
         android:id="@+id/problemNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="@string/app_name"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal_hl_1"
-        app:layout_constraintLeft_toLeftOf="@id/vertical_hl_1" />
+        android:text="Номер задачи"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_hl_1"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_hl_2"
+        app:layout_constraintLeft_toLeftOf="@+id/vertical_hl_1" />
+
+    <TextView
+        android:id="@+id/problemForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Класс"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_hl_2"
+        app:layout_constraintBottom_toTopOf="@id/horizontal_hl_3"
+        app:layout_constraintLeft_toLeftOf="@+id/vertical_hl_1"/>
+
+    <TextView
+        android:id="@+id/problemDiff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Сложность"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_hl_3"
+        app:layout_constraintBottom_toTopOf="@id/horizontal_hl_4"
+        app:layout_constraintLeft_toLeftOf="@+id/vertical_hl_1"/>
+
+    <TextView
+        android:id="@+id/problemTopic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Тема"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_hl_4"
+        app:layout_constraintBottom_toTopOf="@id/horizontal_hl_5"
+        app:layout_constraintLeft_toLeftOf="@+id/vertical_hl_1"/>
 
 </android.support.constraint.ConstraintLayout>
