@@ -7,8 +7,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class ProblemInfo extends AppCompatActivity {
 
@@ -25,6 +28,10 @@ public class ProblemInfo extends AppCompatActivity {
         int problemId = intent.getIntExtra(ProblemActivity.EXTRA_MESSAGE, 1);
         Problem problem = ProblemActivity.problems.get(problemId - 1);
 
+        TextView tv5 = (TextView)findViewById(R.id.problemTextInfo);
+        tv5.setWidth(screenWidth() / 10 * 9);
+        tv5.setText(problem.text);
+
         TextView tv1 = (TextView)findViewById(R.id.problemNo);
         tv1.setText("Задача № " + problem.id);
         TextView tv2 = (TextView)findViewById(R.id.problemForm);
@@ -36,4 +43,9 @@ public class ProblemInfo extends AppCompatActivity {
 
     }
 
+    public int screenWidth() {
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        return dm.widthPixels;
+    }
 }

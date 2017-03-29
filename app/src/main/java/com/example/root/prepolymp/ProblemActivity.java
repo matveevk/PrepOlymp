@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,8 +35,14 @@ public class ProblemActivity extends AppCompatActivity {
         int width = getResources().getDisplayMetrics().widthPixels / 10 * 9;
         int height = linearLayout.getHeight();
         linearLayout.setLayoutParams(new LinearLayout.LayoutParams(width, height));
+        */
+            // OR
+        /*
+        // another option
+        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.linearLayoutProblemInfo);
+        linearLayout.setMinimumWidth(screenWidth() / 10 * 9);
         TextView tv = (TextView)findViewById(R.id.problemText);
-        tv.setWidth(width);
+        tv.setWidth(screenWidth() / 10 * 9);
         */
 
         Problem problem = new Problem(1, "Найдите наименьшее натуральное число, кратное 99, в десятичной записи которого участвуют только чётные цифры.", "228888", "алгебра");
@@ -84,5 +91,11 @@ public class ProblemActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public int screenWidth() {
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        return dm.widthPixels;
     }
 }

@@ -7,5 +7,11 @@
 
     <string name="problem_data" formatted="false">Задача № %d. Класс: %d. Сложность: %d</string>
     <string name="title_activity_problem_info">Информация о задаче</string>
+    <string name="title_activity_problem_list">ProblemList</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 
 </resources>
