@@ -72,7 +72,7 @@
             app:layout_constraintRight_toRightOf="parent"
             android:tint="#3F51B5"
             android:backgroundTint="#FFFFFF"
-            app:srcCompat="@drawable/ic_info_outline_black_24px" />
+            app:srcCompat="@drawable/ic_menu_about" />
 
     </LinearLayout>
 
