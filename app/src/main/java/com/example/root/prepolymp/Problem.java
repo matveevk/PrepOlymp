@@ -3,8 +3,8 @@ package com.example.root.prepolymp;
 import java.util.ArrayList;
 
 public class Problem {
-    int id = 0;
-    String text = "Текст недоступен";
+    public int id = 0;
+    public String text = "Текст недоступен";
     String ans = "";
     String topic = "Не указано";
     int form = 9;
@@ -40,4 +40,8 @@ public class Problem {
         this.ans = ans;
     }
 
+    @Override
+    public String toString() {
+        return this.text;
+    }
 }

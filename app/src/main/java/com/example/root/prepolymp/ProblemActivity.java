@@ -21,7 +21,6 @@ import java.util.ArrayList;
 public class ProblemActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.root.prepolymp.MESSAGE";
-    public static ArrayList<Problem> problems= new ArrayList<>();
 
     // id, text, answer, form, difficulty, origins
 
@@ -46,7 +45,6 @@ public class ProblemActivity extends AppCompatActivity {
         */
 
         Problem problem = new Problem(1, "Найдите наименьшее натуральное число, кратное 99, в десятичной записи которого участвуют только чётные цифры.", "228888", "алгебра");
-        problems.add(problem);
 
         showProblem(problem);
 

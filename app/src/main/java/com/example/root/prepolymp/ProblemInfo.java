@@ -26,7 +26,7 @@ public class ProblemInfo extends AppCompatActivity {
 
         Intent intent = getIntent();
         int problemId = intent.getIntExtra(ProblemActivity.EXTRA_MESSAGE, 1);
-        Problem problem = ProblemActivity.problems.get(problemId - 1);
+        Problem problem = MainActivity.problems.get(problemId - 1);
 
         TextView tv5 = (TextView)findViewById(R.id.problemTextInfo);
         tv5.setWidth(screenWidth() / 10 * 9);
