@@ -1,5 +1,6 @@
 package com.example.root.prepolymp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,13 +14,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class ProblemList extends AppCompatActivity
+public class NavDrawerFavourites extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_problem_list);
+        setContentView(R.layout.activity_nav_drawer_favourites);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -35,7 +36,7 @@ public class ProblemList extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -55,7 +56,7 @@ public class ProblemList extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.problem_list, menu);
+        getMenuInflater().inflate(R.menu.nav_drawer_problems, menu);
         return true;
     }
 
@@ -81,9 +82,9 @@ public class ProblemList extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_problems) {
-            // Handle the camera action
-        } else if (id == R.id.nav_favourites) {
 
+        } else if (id == R.id.nav_favourites) {
+            // we are here
         } else if (id == R.id.nav_solve_later) {
 
         } else if (id == R.id.nav_solved) {

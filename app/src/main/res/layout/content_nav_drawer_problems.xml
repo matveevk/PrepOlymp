@@ -5,7 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.root.prepolymp.ProblemList"
-    tools:showIn="@layout/app_bar_problem_list">
+    tools:context="com.example.root.prepolymp.NavDrawerProblems"
+    tools:showIn="@layout/app_bar_nav_drawer_problems">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Problems"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="16dp" />
 </android.support.constraint.ConstraintLayout>
