@@ -1,22 +1,22 @@
 package com.example.root.prepolymp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import com.example.root.prepolymp.fragments.ProblemList;
 
 public class ProblemActivity extends AppCompatActivity {
 
@@ -28,6 +28,15 @@ public class ProblemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.problem_view);
+
+        Intent intent = getIntent();
+        int i = intent.getIntExtra(ProblemList.EXTRA, -1);
+
+        Log.d("problemactivity", "" + i);
+        Problem problem = Start.problems.get(i);
+
+        setTitle("Задача № " + problem.id);
+
         /*
         // stretching the linearLayout to what we need (and problemText)
         LinearLayout linearLayout = (LinearLayout)findViewById(R.id.linearLayoutProblemInfo);
@@ -43,8 +52,6 @@ public class ProblemActivity extends AppCompatActivity {
         TextView tv = (TextView)findViewById(R.id.problemText);
         tv.setWidth(screenWidth() / 10 * 9);
         */
-
-        Problem problem = new Problem(1, "Найдите наименьшее натуральное число, кратное 99, в десятичной записи которого участвуют только чётные цифры.", "228888", "алгебра");
 
         showProblem(problem);
 
@@ -95,5 +102,22 @@ public class ProblemActivity extends AppCompatActivity {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         return dm.widthPixels;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_problem_activity, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_to_favourites:
+                Toast.makeText(this, "Лайк!", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

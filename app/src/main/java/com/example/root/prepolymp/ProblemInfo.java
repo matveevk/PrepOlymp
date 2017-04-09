@@ -1,17 +1,11 @@
 package com.example.root.prepolymp;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
-import android.view.View;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 public class ProblemInfo extends AppCompatActivity {
 
@@ -21,12 +15,11 @@ public class ProblemInfo extends AppCompatActivity {
         setContentView(R.layout.activity_problem_info);
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar ab = getActionBar();
-        //ab.setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         int problemId = intent.getIntExtra(ProblemActivity.EXTRA_MESSAGE, 1);
-        Problem problem = MainActivity.problems.get(problemId - 1);
+        Problem problem = Start.problems.get(problemId - 1);
 
         TextView tv5 = (TextView)findViewById(R.id.problemTextInfo);
         tv5.setWidth(screenWidth() / 10 * 9);

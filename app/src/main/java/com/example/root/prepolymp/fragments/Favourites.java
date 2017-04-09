@@ -7,9 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.root.prepolymp.Problem;
 import com.example.root.prepolymp.R;
 
+import java.util.ArrayList;
+
 public class Favourites extends Fragment {
+
+    public static ArrayList<Problem> favourites = new ArrayList<>();
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
