@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.root.prepolymp.fragments.ProblemList;
 
 import static com.example.root.prepolymp.Start.isFavourite;
+import static com.example.root.prepolymp.Start.isLater;
 
 public class ProblemActivity extends AppCompatActivity {
 
@@ -116,13 +117,20 @@ public class ProblemActivity extends AppCompatActivity {
         } else {
             menu.findItem(R.id.add_to_favourites).setIcon(R.drawable.ic_menu_favourites_false);
         }
+        if (isLater.get(problem.id - 1)) {
+            menu.findItem(R.id.add_to_later).setIcon(R.drawable.ic_add_to_later_true);
+        } else {
+            menu.findItem(R.id.add_to_later).setIcon(R.drawable.ic_add_to_later_false);
+        }
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+
             case R.id.add_to_favourites:
+                // TODO: 4/10/17 change the Favourites listview
                 if (isFavourite.get(problem.id - 1)) {
                     isFavourite.set(problem.id - 1, false);
                     item.setIcon(R.drawable.ic_menu_favourites_false);
@@ -133,6 +141,20 @@ public class ProblemActivity extends AppCompatActivity {
                     Toast.makeText(this, "Добавлено в понравившиеся", Toast.LENGTH_LONG).show();
                 }
                 break;
+
+            case R.id.add_to_later:
+                // TODO: 4/10/17 change the Favourites listview
+                if (isLater.get(problem.id - 1)) {
+                    isLater.set(problem.id - 1, false);
+                    item.setIcon(R.drawable.ic_add_to_later_false);
+                    Toast.makeText(this, "Удалено из отложенных", Toast.LENGTH_LONG).show();
+                } else {
+                    isLater.set(problem.id - 1, true);
+                    item.setIcon(R.drawable.ic_add_to_later_true);
+                    Toast.makeText(this, "Добавлено в отложенные", Toast.LENGTH_LONG).show();
+                }
+                break;
+
             case android.R.id.home:
                 onBackPressed();
                 return true;

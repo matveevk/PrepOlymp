@@ -10,7 +10,7 @@
         android:textColor="@android:color/darker_gray"
         android:gravity="center"
         android:textSize="26sp"
-        android:text="AAAA" />
+        android:text="" />
 
     <ListView
         android:id="@+id/list_favourites"

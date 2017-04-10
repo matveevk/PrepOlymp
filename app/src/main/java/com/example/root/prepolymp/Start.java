@@ -10,6 +10,7 @@ public class Start extends AppCompatActivity {
 
     public static ArrayList<Problem> problems = new ArrayList<>();
     public static ArrayList<Boolean> isFavourite = new ArrayList<>();
+    public static ArrayList<Boolean> isLater = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,10 +20,14 @@ public class Start extends AppCompatActivity {
         Problem problem = new Problem(1, "Найдите наименьшее натуральное число, кратное 99, в десятичной записи которого участвуют только чётные цифры.", "228888", "алгебра");
         problems.add(problem);
         isFavourite.add(false);
+        isLater.add(false);
         problems.add(new Problem(2, "Посчитайте 2 + 3", "5", "алгебра"));
         isFavourite.add(false);
+        isLater.add(false);
         problems.add(new Problem(3, "Посчитайте 25 + 3", "28", "алгебра"));
         isFavourite.add(false);
+        isLater.add(false);
+
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

@@ -23,9 +23,6 @@ import static com.example.root.prepolymp.Start.problems;
 import static com.example.root.prepolymp.fragments.ProblemList.EXTRA;
 
 public class Favourites extends Fragment {
-
-    public final static String MESSAGE_FAV = "com.example.root.prepolymp.fragments.Favourites";
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
