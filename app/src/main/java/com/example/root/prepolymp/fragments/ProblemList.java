@@ -40,7 +40,8 @@ public class ProblemList extends Fragment {
         }
 
         ListView listView = (ListView)view.findViewById(R.id.list_problems);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.custom_textview, probText);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                                                    R.layout.custom_textview, probText);
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -18,9 +18,12 @@ import android.widget.Toast;
 
 import com.example.root.prepolymp.fragments.ProblemList;
 
+import static com.example.root.prepolymp.Start.isFavourite;
+
 public class ProblemActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.root.prepolymp.MESSAGE";
+    Problem problem = new Problem(0, "Нет условия", "", "алгебра");
 
     // id, text, answer, form, difficulty, origins
 
@@ -33,7 +36,7 @@ public class ProblemActivity extends AppCompatActivity {
         int i = intent.getIntExtra(ProblemList.EXTRA, -1);
 
         Log.d("problemactivity", "" + i);
-        Problem problem = Start.problems.get(i);
+        problem = Start.problems.get(i);
 
         setTitle("Задача № " + problem.id);
 
@@ -108,6 +111,11 @@ public class ProblemActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_problem_activity, menu);
+        if (isFavourite.get(problem.id - 1)) {
+            menu.findItem(R.id.add_to_favourites).setIcon(R.drawable.ic_menu_favourites_true);
+        } else {
+            menu.findItem(R.id.add_to_favourites).setIcon(R.drawable.ic_menu_favourites_false);
+        }
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -115,8 +123,19 @@ public class ProblemActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_to_favourites:
-                Toast.makeText(this, "Лайк!", Toast.LENGTH_SHORT).show();
+                if (isFavourite.get(problem.id - 1)) {
+                    isFavourite.set(problem.id - 1, false);
+                    item.setIcon(R.drawable.ic_menu_favourites_false);
+                    Toast.makeText(this, "Удалено из понравившихся", Toast.LENGTH_LONG).show();
+                } else {
+                    isFavourite.set(problem.id - 1, true);
+                    item.setIcon(R.drawable.ic_menu_favourites_true);
+                    Toast.makeText(this, "Добавлено в понравившиеся", Toast.LENGTH_LONG).show();
+                }
                 break;
+            case android.R.id.home:
+                onBackPressed();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
