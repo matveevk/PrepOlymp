@@ -25,16 +25,19 @@
             <item
                 android:id="@+id/nav_stats"
                 android:icon="@drawable/ic_stats_black_24dp"
-                android:title="Статистика" />
+                android:title="Статистика"
+                android:checkable="true" />
 
             <item
                 android:id="@+id/nav_settings"
                 android:icon="@drawable/ic_menu_settings"
-                android:title="Настройки" />
+                android:title="Настройки"
+                android:checkable="true"  />
             <item
                 android:id="@+id/nav_about"
                 android:icon="@drawable/ic_menu_about"
-                android:title="О приложении" />
+                android:title="О приложении"
+                android:checkable="true"  />
         </menu>
     </item>
 
