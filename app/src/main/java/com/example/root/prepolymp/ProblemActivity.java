@@ -2,10 +2,11 @@ package com.example.root.prepolymp;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,9 +18,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.root.prepolymp.fragments.ProblemList;
+import com.example.root.prepolymp.fragments.Stats;
 
 import static com.example.root.prepolymp.Start.isFavourite;
 import static com.example.root.prepolymp.Start.isLater;
+import static com.example.root.prepolymp.Start.isSolved;
 
 public class ProblemActivity extends AppCompatActivity {
 
@@ -36,7 +39,6 @@ public class ProblemActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int i = intent.getIntExtra(ProblemList.EXTRA, -1);
 
-        Log.d("problemactivity", "" + i);
         problem = Start.problems.get(i);
 
         setTitle("Задача № " + problem.id);
@@ -58,6 +60,15 @@ public class ProblemActivity extends AppCompatActivity {
         */
 
         showProblem(problem);
+
+        if (isSolved.get(problem.id - 1)) {
+            TextView tv = (TextView)findViewById(R.id.checkResult);
+            tv.setText("Решено");
+            tv.setTypeface(null, Typeface.BOLD);
+            tv.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
+            EditText editText = (EditText)findViewById(R.id.insertAnswer);
+            editText.setText(problem.ans);
+        }
 
         openInfo(problem);
 
@@ -91,15 +102,34 @@ public class ProblemActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String s = userAns.getText().toString();
                 TextView checkResult = (TextView)findViewById(R.id.checkResult);
+                addAtt(problem.topic);
                 if (s.equals(problem.ans)) {
                     checkResult.setTextColor(Color.parseColor("#66BB6A"));
                     checkResult.setText("Верно!");
+                    isSolved.set(problem.id - 1, true);
+                    addCor(problem.topic);
                 } else {
                     checkResult.setTextColor(Color.RED);
                     checkResult.setText("Неверно!");
                 }
             }
         });
+    }
+
+    public void addAtt(String s) {
+        switch (s) {
+            case "алгебра": ++Stats.att_alg; break;
+            case "комбинаторика": ++Stats.att_comb; break;
+            case "геометрия": ++Stats.att_geom; break;
+        }
+    }
+
+    public void addCor(String s) {
+        switch (s) {
+            case "алгебра": ++Stats.cor_alg; break;
+            case "комбинаторика": ++Stats.cor_comb; break;
+            case "геометрия": ++Stats.cor_geom; break;
+        }
     }
 
     public int screenWidth() {
@@ -112,16 +142,19 @@ public class ProblemActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_problem_activity, menu);
+
         if (isFavourite.get(problem.id - 1)) {
             menu.findItem(R.id.add_to_favourites).setIcon(R.drawable.ic_menu_favourites_true);
         } else {
             menu.findItem(R.id.add_to_favourites).setIcon(R.drawable.ic_menu_favourites_false);
         }
+
         if (isLater.get(problem.id - 1)) {
             menu.findItem(R.id.add_to_later).setIcon(R.drawable.ic_add_to_later_true);
         } else {
             menu.findItem(R.id.add_to_later).setIcon(R.drawable.ic_add_to_later_false);
         }
+
         return super.onCreateOptionsMenu(menu);
     }
 

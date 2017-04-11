@@ -4,8 +4,20 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/solved_no_problems"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="fragment menu Solved" />
+        android:layout_height="match_parent"
+        android:textColor="@android:color/darker_gray"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:text="" />
+
+    <ListView
+        android:id="@+id/list_solved"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:dividerHeight="0dp"
+        android:divider="@android:color/white" />
+
 </LinearLayout>

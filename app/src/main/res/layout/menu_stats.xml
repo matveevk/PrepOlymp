@@ -1,0 +1,69 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.root.prepolymp.fragments.Stats">
+
+
+    <TextView
+        android:id="@+id/stats1"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/stats2"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stats1" />
+
+    <TextView
+        android:id="@+id/stats3"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stats2" />
+
+    <TextView
+        android:id="@+id/stats4"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stats3" />
+
+    <TextView
+        android:id="@+id/stats5"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stats4" />
+
+</android.support.constraint.ConstraintLayout>

@@ -16,6 +16,7 @@ import com.example.root.prepolymp.fragments.Favourites;
 import com.example.root.prepolymp.fragments.ProblemList;
 import com.example.root.prepolymp.fragments.SolveLater;
 import com.example.root.prepolymp.fragments.Solved;
+import com.example.root.prepolymp.fragments.Stats;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -99,6 +100,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_solved:
                 fragment = new Solved();
+                break;
+            case R.id.nav_stats:
+                fragment = new Stats();
                 break;
         }
 

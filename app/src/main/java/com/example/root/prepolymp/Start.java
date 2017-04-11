@@ -11,6 +11,7 @@ public class Start extends AppCompatActivity {
     public static ArrayList<Problem> problems = new ArrayList<>();
     public static ArrayList<Boolean> isFavourite = new ArrayList<>();
     public static ArrayList<Boolean> isLater = new ArrayList<>();
+    public static ArrayList<Boolean> isSolved = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +22,17 @@ public class Start extends AppCompatActivity {
         problems.add(problem);
         isFavourite.add(false);
         isLater.add(false);
+        isSolved.add(false);
+
         problems.add(new Problem(2, "Посчитайте 2 + 3", "5", "алгебра"));
         isFavourite.add(false);
         isLater.add(false);
+        isSolved.add(false);
+
         problems.add(new Problem(3, "Посчитайте 25 + 3", "28", "алгебра"));
         isFavourite.add(false);
         isLater.add(false);
+        isSolved.add(false);
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
