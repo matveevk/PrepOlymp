@@ -24,12 +24,67 @@ public class Start extends AppCompatActivity {
         isLater.add(false);
         isSolved.add(false);
 
-        problems.add(new Problem(2, "Посчитайте 2 + 3", "5", "алгебра"));
+        problems.add(new Problem(2, "Посчитайте 25 + 3", "28", "алгебра", 10));
         isFavourite.add(false);
         isLater.add(false);
         isSolved.add(false);
 
-        problems.add(new Problem(3, "Посчитайте 25 + 3", "28", "алгебра"));
+        problems.add(new Problem(3, "Посчитайте 25 + 3", "28", "геометрия", 11));
+        isFavourite.add(false);
+        isLater.add(false);
+        isSolved.add(false);
+
+        problems.add(new Problem(4, "Посчитайте 25 + 3", "28", "алгебра", 9));
+        isFavourite.add(false);
+        isLater.add(false);
+        isSolved.add(false);
+
+        problems.add(new Problem(5, "Посчитайте 25 + 3", "28", "комбинаторика", 8));
+        isFavourite.add(false);
+        isLater.add(false);
+        isSolved.add(false);
+
+        problems.add(new Problem(6, "Посчитайте 25 + 3", "28", "геометрия", 10));
+        isFavourite.add(false);
+        isLater.add(false);
+        isSolved.add(false);
+
+        problems.add(new Problem(7, "Посчитайте 25 + 3", "28", "алгебра", 10));
+        isFavourite.add(false);
+        isLater.add(false);
+        isSolved.add(false);
+
+        problems.add(new Problem(8, "Посчитайте 25 + 3", "28", "комбинаторика", 11));
+        isFavourite.add(false);
+        isLater.add(false);
+        isSolved.add(false);
+
+        problems.add(new Problem(9, "Посчитайте 25 + 3", "28", "комбинаторика", 10));
+        isFavourite.add(false);
+        isLater.add(false);
+        isSolved.add(false);
+
+        problems.add(new Problem(10, "Посчитайте 25 + 3", "28", "геометрия", 10));
+        isFavourite.add(false);
+        isLater.add(false);
+        isSolved.add(false);
+
+        problems.add(new Problem(11, "Посчитайте 25 + 3", "28", "алгебра", 8));
+        isFavourite.add(false);
+        isLater.add(false);
+        isSolved.add(false);
+
+        problems.add(new Problem(12, "Посчитайте 25 + 3", "28", "геометрия", 10));
+        isFavourite.add(false);
+        isLater.add(false);
+        isSolved.add(false);
+
+        problems.add(new Problem(13, "Посчитайте 25 + 3", "28", "геометрия", 9));
+        isFavourite.add(false);
+        isLater.add(false);
+        isSolved.add(false);
+
+        problems.add(new Problem(14, "Посчитайте 25 + 3", "28", "алгебра", 8));
         isFavourite.add(false);
         isLater.add(false);
         isSolved.add(false);

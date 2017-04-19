@@ -1,15 +1,13 @@
 package com.example.root.prepolymp;
 
-import java.util.ArrayList;
-
 public class Problem {
     public int id = 0;
     public String text = "Текст недоступен";
-    String ans = "";
-    String topic = "Не указано";
-    int form = 9;
-    int diff = 3;
-    String origins = "Неизвестно";
+    public String ans = "";
+    public String topic = "Не указано";
+    public int form = 9;
+    public int diff = 3;
+    public String origins = "Неизвестно";
 
     Problem() {
     }
@@ -31,6 +29,14 @@ public class Problem {
         this.topic = topic;
         this.form = form;
         this.diff = diff;
+    }
+
+    Problem(int id, String text, String ans, String topic, int form) {
+        this.id = id;
+        this.text = text;
+        this.ans = ans;
+        this.topic = topic;
+        this.form = form;
     }
 
     Problem(int id, String text, String ans, String topic) {

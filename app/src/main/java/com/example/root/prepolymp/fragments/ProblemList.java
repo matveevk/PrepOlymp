@@ -1,15 +1,19 @@
 package com.example.root.prepolymp.fragments;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.root.prepolymp.Problem;
 import com.example.root.prepolymp.ProblemActivity;
@@ -17,6 +21,7 @@ import com.example.root.prepolymp.R;
 
 import java.util.ArrayList;
 
+import static com.example.root.prepolymp.Start.isSolved;
 import static com.example.root.prepolymp.Start.problems;
 
 public class ProblemList extends Fragment {
@@ -34,14 +39,36 @@ public class ProblemList extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Задачи");
 
-        ArrayList<String> probText = new ArrayList<>();
+        final ArrayList<String> probText = new ArrayList<>();
         for (Problem s : problems) {
-            probText.add("Задача № " + s.id);
+            String ss = "№ " + s.id + " - ";
+            if (s.topic == "алгебра") {
+                ss += ("<font size=3 color=#C162EA>алг</font>");
+            } else if (s.topic == "геометрия") {
+                ss += ("<font size=3 color=#2675BF>геом</font>");
+            } else {
+                ss += ("<font size=3 color=#499351>комб</font>");
+            }
+            ss += "  " + s.form + " класс";
+            probText.add(ss);
         }
 
         ListView listView = (ListView)view.findViewById(R.id.list_problems);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
-                                                    R.layout.custom_textview, probText);
+                                                    R.layout.custom_textview, probText) {
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                TextView tv = (TextView)super.getView(position, convertView, parent);
+                if (isSolved.get(position)) {
+                    tv.setText(Html.fromHtml(probText.get(position)) + " (решено)");
+                    tv.setTextColor(Color.GRAY);
+                } else {
+                    tv.setText(Html.fromHtml(probText.get(position)));
+                }
+                return tv;
+            }
+        };
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
