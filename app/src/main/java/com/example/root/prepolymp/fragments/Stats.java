@@ -42,7 +42,7 @@ public class Stats extends Fragment {
 
 
         TextView tv3 = (TextView)view.findViewById(R.id.stats3);
-        tv3.setText(Html.fromHtml("Алгебра: <font color=#0000FF>" + cor_alg + "</font> из <font color=#0000FF>" + att_alg + "</font> попыток."));
+        tv3.setText(Html.fromHtml("Алгебра: <font color=#C162EA>" + cor_alg + "</font> из <font color=#0000FF>" + att_alg + "</font> попыток."));
 
         TextView tv4 = (TextView)view.findViewById(R.id.stats4);
         tv4.setText("Комбинаторика: " + cor_comb + " из " + att_comb + " попыток.");

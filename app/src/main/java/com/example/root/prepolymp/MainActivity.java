@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.root.prepolymp.fragments.About;
 import com.example.root.prepolymp.fragments.Favourites;
 import com.example.root.prepolymp.fragments.ProblemList;
 import com.example.root.prepolymp.fragments.SolveLater;
@@ -103,6 +104,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_stats:
                 fragment = new Stats();
+                break;
+            case R.id.nav_about:
+                fragment = new About();
                 break;
         }
 

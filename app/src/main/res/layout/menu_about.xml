@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/menu_about1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Что такое PrepOlymp?"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/menu_about_gl"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:id="@+id/menu_about2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/menu_about1"
+            app:layout_constraintLeft_toLeftOf="@+id/menu_about_gl" />
+
+        <TextView
+            android:id="@+id/menu_about3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Как им пользоваться?"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/menu_about2"
+            app:layout_constraintLeft_toLeftOf="@+id/menu_about_gl"/>
+
+        <TextView
+            android:id="@+id/menu_about4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/menu_about3"
+            app:layout_constraintLeft_toLeftOf="@+id/menu_about_gl" />
+
+        <TextView
+            android:id="@+id/menu_about5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Как с нами связаться?"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/menu_about4"
+            app:layout_constraintLeft_toLeftOf="@+id/menu_about_gl"/>
+
+        <TextView
+            android:id="@+id/menu_about6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/menu_about5"
+            app:layout_constraintLeft_toLeftOf="@+id/menu_about_gl" />
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/menu_about_gl"
+            app:layout_constraintGuide_percent="0.06"
+            android:orientation="vertical" />
+
+        <View
+            android:id="@+id/menu_about_horline"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@+id/menu_about6"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <TextView
+            android:id="@+id/menu_about7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/menu_about_horline"
+            app:layout_constraintLeft_toLeftOf="@+id/menu_about_gl" />
+
+    </android.support.constraint.ConstraintLayout>
+    
+</ScrollView>

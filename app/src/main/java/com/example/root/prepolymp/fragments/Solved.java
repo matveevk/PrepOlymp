@@ -2,8 +2,10 @@ package com.example.root.prepolymp.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,22 +38,40 @@ public class Solved extends Fragment {
         ListView listView = (ListView) view.findViewById(R.id.list_solved);
         TextView tv = (TextView) view.findViewById(R.id.solved_no_problems);
 
-        ArrayList<String> probText = new ArrayList<>();
+        final ArrayList<String> probText = new ArrayList<>();
         for (int i = 0; i < isSolved.size(); ++i) {
             if (isSolved.get(i) == true) {
-                Problem problem = problems.get(i);
-                probText.add("Задача № " + problem.id);
+                Problem s = problems.get(i);
+                String htmlCode = "№ " + s.id + " - ";
+                if (s.topic == "алгебра") {
+                    htmlCode += ("<font size=3 color=#C162EA>алг</font>");
+                } else if (s.topic == "геометрия") {
+                    htmlCode += ("<font size=3 color=#2675BF>геом</font>");
+                } else {
+                    htmlCode += ("<font size=3 color=#499351>комб</font>");
+                }
+                htmlCode += "  " + s.form + " класс";
+                probText.add(htmlCode);
             }
         }
 
         if (probText.size() == 0) {
             tv.setVisibility(View.VISIBLE);
-            tv.setText("Вы пока ничего не решили");
+            tv.setText("Вы ещё ничего не решили");
         } else {
             tv.setVisibility(View.GONE);
 
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
-                    R.layout.custom_textview, probText);
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                    R.layout.custom_textview, probText) {
+                @NonNull
+                @Override
+                public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                    TextView tv = (TextView)super.getView(position, convertView, parent);
+                    tv.setText(Html.fromHtml(probText.get(position)));
+                    return tv;
+                }
+            };
+
             listView.setAdapter(arrayAdapter);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
