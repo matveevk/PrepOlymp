@@ -11,17 +11,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.root.prepolymp.fragments.About;
 import com.example.root.prepolymp.fragments.Favourites;
 import com.example.root.prepolymp.fragments.ProblemList;
+import com.example.root.prepolymp.fragments.Settings;
 import com.example.root.prepolymp.fragments.SolveLater;
 import com.example.root.prepolymp.fragments.Solved;
 import com.example.root.prepolymp.fragments.Stats;
 
+import static com.example.root.prepolymp.Storage.firstname;
+import static com.example.root.prepolymp.Storage.lastname;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +43,12 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View header = navigationView.getHeaderView(0);
+        TextView tv = (TextView)header.findViewById(R.id.nav_text_view1);
+        tv.setText(firstname + " " + lastname);
 
         displaySelectedFragment(R.id.nav_problem_list);
     }
@@ -107,6 +118,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_about:
                 fragment = new About();
+                break;
+            case R.id.nav_settings:
+                fragment = new Settings();
                 break;
         }
 

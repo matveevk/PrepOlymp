@@ -21,8 +21,7 @@ import com.example.root.prepolymp.R;
 
 import java.util.ArrayList;
 
-import static com.example.root.prepolymp.Start.isSolved;
-import static com.example.root.prepolymp.Start.problems;
+import static com.example.root.prepolymp.Storage.problems;
 
 public class ProblemList extends Fragment {
 
@@ -42,9 +41,9 @@ public class ProblemList extends Fragment {
         final ArrayList<String> probText = new ArrayList<>();
         for (Problem s : problems) {
             String ss = "№ " + s.id + " - ";
-            if (s.topic == "алгебра") {
+            if (s.topic.equals("алгебра")) {
                 ss += ("<font size=3 color=#C162EA>алг</font>");
-            } else if (s.topic == "геометрия") {
+            } else if (s.topic.equals("геометрия")) {
                 ss += ("<font size=3 color=#2675BF>геом</font>");
             } else {
                 ss += ("<font size=3 color=#499351>комб</font>");
@@ -60,7 +59,7 @@ public class ProblemList extends Fragment {
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 TextView tv = (TextView)super.getView(position, convertView, parent);
-                if (isSolved.get(position)) {
+                if (problems.get(position).solved) {
                     tv.setText(Html.fromHtml(probText.get(position)) + " (решено)");
                     tv.setTextColor(Color.GRAY);
                 } else {

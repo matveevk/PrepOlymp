@@ -8,9 +8,11 @@ public class Problem {
     public int form = 9;
     public int diff = 3;
     public String origins = "Неизвестно";
+    public boolean liked = false;
+    public boolean marked = false;
+    public boolean solved = false;
 
-    Problem() {
-    }
+    Problem() {}
 
     Problem(int id, String text, String ans, String topic, int form, int diff, String origins) {
         this.id = id;
@@ -44,6 +46,19 @@ public class Problem {
         this.text = text;
         this.topic = topic;
         this.ans = ans;
+    }
+
+    Problem(int id, String text, String ans, String topic, int form, int diff, String origins, boolean liked, boolean marked, boolean solved) {
+        this.id = id;
+        this.text = text;
+        this.ans = ans;
+        this.topic = topic;
+        this.form = form;
+        this.diff = diff;
+        this.origins = origins;
+        this.liked = liked;
+        this.marked = marked;
+        this.solved = solved;
     }
 
     @Override

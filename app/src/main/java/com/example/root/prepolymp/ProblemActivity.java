@@ -20,14 +20,14 @@ import android.widget.Toast;
 import com.example.root.prepolymp.fragments.ProblemList;
 import com.example.root.prepolymp.fragments.Stats;
 
-import static com.example.root.prepolymp.Start.isFavourite;
-import static com.example.root.prepolymp.Start.isLater;
-import static com.example.root.prepolymp.Start.isSolved;
+import static com.example.root.prepolymp.MainActivity.navigationView;
+import static com.example.root.prepolymp.Storage.problems;
 
 public class ProblemActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.root.prepolymp.MESSAGE";
     Problem problem = new Problem(0, "Нет условия", "", "алгебра");
+    static DBManager dbProblems;
 
     // id, text, answer, form, difficulty, origins
 
@@ -39,9 +39,11 @@ public class ProblemActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int i = intent.getIntExtra(ProblemList.EXTRA, -1);
 
-        problem = Start.problems.get(i);
+        problem = problems.get(i);
 
         setTitle("Задача № " + problem.id);
+
+        dbProblems = new DBManager(this);
 
         /*
         // stretching the linearLayout to what we need (and problemText)
@@ -61,7 +63,7 @@ public class ProblemActivity extends AppCompatActivity {
 
         showProblem(problem);
 
-        if (isSolved.get(problem.id - 1)) {
+        if (problem.solved) {
             TextView tv = (TextView)findViewById(R.id.checkResult);
             tv.setText("Решено");
             tv.setTypeface(null, Typeface.BOLD);
@@ -106,8 +108,11 @@ public class ProblemActivity extends AppCompatActivity {
                 if (s.equals(problem.ans)) {
                     checkResult.setTextColor(Color.parseColor("#66BB6A"));
                     checkResult.setText("Верно!");
-                    isSolved.set(problem.id - 1, true);
+                    problem.solved = true;
+                    problem.marked = false;
                     addCor(problem.topic);
+                    navHeaderUpdate();
+                    dbProblems.updateProblem(problem);
                 } else {
                     checkResult.setTextColor(Color.RED);
                     checkResult.setText("Неверно!");
@@ -143,13 +148,13 @@ public class ProblemActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_problem_activity, menu);
 
-        if (isFavourite.get(problem.id - 1)) {
+        if (problem.liked = true) {
             menu.findItem(R.id.add_to_favourites).setIcon(R.drawable.ic_menu_favourites_true);
         } else {
             menu.findItem(R.id.add_to_favourites).setIcon(R.drawable.ic_menu_favourites_false);
         }
 
-        if (isLater.get(problem.id - 1)) {
+        if (problem.marked = true) {
             menu.findItem(R.id.add_to_later).setIcon(R.drawable.ic_add_to_later_true);
         } else {
             menu.findItem(R.id.add_to_later).setIcon(R.drawable.ic_add_to_later_false);
@@ -164,28 +169,32 @@ public class ProblemActivity extends AppCompatActivity {
 
             case R.id.add_to_favourites:
                 // TODO: 4/10/17 change the Favourites listview
-                if (isFavourite.get(problem.id - 1)) {
-                    isFavourite.set(problem.id - 1, false);
+                if (problem.liked) {
+                    problem.liked = false;
                     item.setIcon(R.drawable.ic_menu_favourites_false);
                     Toast.makeText(this, "Удалено из понравившихся", Toast.LENGTH_LONG).show();
                 } else {
-                    isFavourite.set(problem.id - 1, true);
+                    problem.liked = true;
                     item.setIcon(R.drawable.ic_menu_favourites_true);
                     Toast.makeText(this, "Добавлено в понравившиеся", Toast.LENGTH_LONG).show();
                 }
+                dbProblems.updateProblem(problem);
                 break;
 
             case R.id.add_to_later:
                 // TODO: 4/10/17 change the Favourites listview
-                if (isLater.get(problem.id - 1)) {
-                    isLater.set(problem.id - 1, false);
+                if (problem.marked) {
+                    problem.marked = false;
                     item.setIcon(R.drawable.ic_add_to_later_false);
                     Toast.makeText(this, "Удалено из отложенных", Toast.LENGTH_LONG).show();
+                } else if (problem.solved) {
+                    Toast.makeText(this, "Нельзя откладывать решённые задачи", Toast.LENGTH_LONG).show();
                 } else {
-                    isLater.set(problem.id - 1, true);
+                    problem.marked = true;
                     item.setIcon(R.drawable.ic_add_to_later_true);
                     Toast.makeText(this, "Добавлено в отложенные", Toast.LENGTH_LONG).show();
                 }
+                dbProblems.updateProblem(problem);
                 break;
 
             case android.R.id.home:
@@ -193,5 +202,18 @@ public class ProblemActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public static void navHeaderUpdate() {
+        View header = navigationView.getHeaderView(0);
+        TextView tv = (TextView) header.findViewById(R.id.nav_text_view2);
+        int n = Stats.totalCor();
+        if (n % 10 == 1) {
+            tv.setText("Решена 1 задача");
+        } else if (2 <= n % 10 && n % 10 <= 4) {
+            tv.setText("Решено " + n + " задачи");
+        } else {
+            tv.setText("Решено " + n + " задач");
+        }
     }
 }

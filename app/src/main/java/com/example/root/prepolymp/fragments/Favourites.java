@@ -21,9 +21,7 @@ import com.example.root.prepolymp.R;
 
 import java.util.ArrayList;
 
-import static com.example.root.prepolymp.Start.isFavourite;
-import static com.example.root.prepolymp.Start.isSolved;
-import static com.example.root.prepolymp.Start.problems;
+import static com.example.root.prepolymp.Storage.problems;
 import static com.example.root.prepolymp.fragments.ProblemList.EXTRA;
 
 public class Favourites extends Fragment {
@@ -41,13 +39,12 @@ public class Favourites extends Fragment {
         TextView tv = (TextView) view.findViewById(R.id.favourites_no_problems);
 
         final ArrayList<String> probText = new ArrayList<>();
-        for (int i = 0; i < isFavourite.size(); ++i) {
-            if (isFavourite.get(i) == true) {
-                Problem s = problems.get(i);
+        for (Problem s : problems) {
+            if (s.liked == true) {
                 String ss = "№ " + s.id + " - ";
-                if (s.topic == "алгебра") {
+                if (s.topic.equals("алгебра")) {
                     ss += ("<font size=3 color=#C162EA>алг</font>");
-                } else if (s.topic == "геометрия") {
+                } else if (s.topic.equals("геометрия")) {
                     ss += ("<font size=3 color=#2675BF>геом</font>");
                 } else {
                     ss += ("<font size=3 color=#499351>комб</font>");
@@ -69,7 +66,7 @@ public class Favourites extends Fragment {
                 @Override
                 public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                     TextView tv = (TextView)super.getView(position, convertView, parent);
-                    if (isSolved.get(position)) {
+                    if (problems.get(position).solved) {
                         tv.setText(Html.fromHtml(probText.get(position)) + " (решено)");
                         tv.setTextColor(Color.GRAY);
                     } else {

@@ -20,8 +20,7 @@ import com.example.root.prepolymp.R;
 
 import java.util.ArrayList;
 
-import static com.example.root.prepolymp.Start.isSolved;
-import static com.example.root.prepolymp.Start.problems;
+import static com.example.root.prepolymp.Storage.problems;
 import static com.example.root.prepolymp.fragments.ProblemList.EXTRA;
 
 public class Solved extends Fragment {
@@ -39,19 +38,18 @@ public class Solved extends Fragment {
         TextView tv = (TextView) view.findViewById(R.id.solved_no_problems);
 
         final ArrayList<String> probText = new ArrayList<>();
-        for (int i = 0; i < isSolved.size(); ++i) {
-            if (isSolved.get(i) == true) {
-                Problem s = problems.get(i);
-                String htmlCode = "№ " + s.id + " - ";
-                if (s.topic == "алгебра") {
-                    htmlCode += ("<font size=3 color=#C162EA>алг</font>");
-                } else if (s.topic == "геометрия") {
-                    htmlCode += ("<font size=3 color=#2675BF>геом</font>");
+        for (Problem s : problems) {
+            if (s.solved) {
+                String ss = "№ " + s.id + " - ";
+                if (s.topic.equals("алгебра")) {
+                    ss += ("<font size=3 color=#C162EA>алг</font>");
+                } else if (s.topic.equals("геометрия")) {
+                    ss += ("<font size=3 color=#2675BF>геом</font>");
                 } else {
-                    htmlCode += ("<font size=3 color=#499351>комб</font>");
+                    ss += ("<font size=3 color=#499351>комб</font>");
                 }
-                htmlCode += "  " + s.form + " класс";
-                probText.add(htmlCode);
+                ss += "  " + s.form + " класс";
+                probText.add(ss);
             }
         }
 

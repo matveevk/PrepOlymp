@@ -39,7 +39,7 @@ public class About extends Fragment {
 
         TextView tv6 = (TextView)view.findViewById(R.id.menu_about6);
         tv6.setWidth(screenWidth() / 100 * 88);
-        String s6 = "Я - автор этого приложения, Матвеев Константин. При возникновении вопросов или пожеланий, свяжитесь со мной по электронной почте matveev.kp@mail.ru";
+        String s6 = "Я - автор этого приложения, Матвеев Константин. При возникновении вопросов или пожеланий свяжитесь со мной по электронной почте matveev.kp@mail.ru";
         tv6.setText(s6);
 
         TextView tv7 = (TextView)view.findViewById(R.id.menu_about7);

@@ -55,7 +55,7 @@ public class Stats extends Fragment {
         return att_alg + att_comb + att_geom;
     }
 
-    public  int totalCor() {
+    public static int totalCor() {
         return cor_alg + cor_comb + cor_geom;
     }
 }

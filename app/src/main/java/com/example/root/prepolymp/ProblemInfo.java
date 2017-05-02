@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.widget.TextView;
 
+import static com.example.root.prepolymp.Storage.problems;
+
 public class ProblemInfo extends AppCompatActivity {
 
     @Override
@@ -19,7 +21,7 @@ public class ProblemInfo extends AppCompatActivity {
 
         Intent intent = getIntent();
         int problemId = intent.getIntExtra(ProblemActivity.EXTRA_MESSAGE, 1);
-        Problem problem = Start.problems.get(problemId - 1);
+        Problem problem = problems.get(problemId - 1);
 
         TextView tv5 = (TextView)findViewById(R.id.problemTextInfo);
         tv5.setWidth(screenWidth() / 10 * 9);

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/firstname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Имя"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="@+id/menu_settings_gl"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/lastname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:text="Фамилия"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@+id/menu_settings_gl"
+            app:layout_constraintTop_toBottomOf="@+id/firstname"
+            android:layout_marginTop="15dp"/>
+
+        <EditText
+            android:id="@+id/firstnameInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="9"
+            android:inputType="textPersonName"
+            app:layout_constraintRight_toRightOf="@+id/menu_settings_gl2"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/lastnameInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="9"
+            android:inputType="textPersonName"
+            app:layout_constraintRight_toRightOf="@+id/menu_settings_gl2"
+            app:layout_constraintTop_toBottomOf="@+id/firstnameInput"/>
+
+        <Button
+            android:id="@+id/saveNames"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Сохранить"
+            app:layout_constraintTop_toBottomOf="@+id/lastnameInput"
+            app:layout_constraintRight_toRightOf="@id/menu_settings_gl2"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="20dp"/>
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/menu_settings_gl"
+            app:layout_constraintGuide_percent="0.07"
+            android:orientation="vertical" />
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/menu_settings_gl2"
+            app:layout_constraintGuide_percent="0.93"
+            android:orientation="vertical" />
+
+    </android.support.constraint.ConstraintLayout>
+    
+</ScrollView>

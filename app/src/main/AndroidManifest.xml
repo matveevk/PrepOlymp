@@ -10,30 +10,26 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ProblemActivity"
-            android:parentActivityName=".MainActivity"
-            android:launchMode="singleTop" />
-
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ProblemInfo"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/title_activity_problem_info"
             android:parentActivityName=".ProblemActivity"
-            android:label="@string/title_activity_problem_info" />
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_problem_list"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Start"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

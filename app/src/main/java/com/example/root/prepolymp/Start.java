@@ -3,95 +3,47 @@ package com.example.root.prepolymp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
-import java.util.ArrayList;
+import static com.example.root.prepolymp.Storage.problems;
 
 public class Start extends AppCompatActivity {
 
-    public static ArrayList<Problem> problems = new ArrayList<>();
-    public static ArrayList<Boolean> isFavourite = new ArrayList<>();
-    public static ArrayList<Boolean> isLater = new ArrayList<>();
-    public static ArrayList<Boolean> isSolved = new ArrayList<>();
+    //static DBManager dbProblems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        if (problems.size() == 0) {
-            Problem problem = new Problem(1, "Найдите наименьшее натуральное число, кратное 99, в десятичной записи которого участвуют только чётные цифры.", "228888", "алгебра");
-            problems.add(problem);
-            isFavourite.add(false);
-            isLater.add(false);
-            isSolved.add(false);
+        Log.d("abc", "3");
+        DBManager dbProblems = new DBManager(this);
+        dbProblems.getWritableDatabase();
 
-            problems.add(new Problem(2, "Посчитайте 25 + 3", "28", "алгебра", 10));
-            isFavourite.add(false);
-            isLater.add(false);
-            isSolved.add(false);
+        Log.d("abc", "2");
 
-            problems.add(new Problem(3, "Посчитайте 25 + 3", "28", "геометрия", 11));
-            isFavourite.add(false);
-            isLater.add(false);
-            isSolved.add(false);
-
-            problems.add(new Problem(4, "Посчитайте 25 + 3", "28", "алгебра", 9));
-            isFavourite.add(false);
-            isLater.add(false);
-            isSolved.add(false);
-
-            problems.add(new Problem(5, "Посчитайте 25 + 3", "28", "комбинаторика", 8));
-            isFavourite.add(false);
-            isLater.add(false);
-            isSolved.add(false);
-
-            problems.add(new Problem(6, "Посчитайте 25 + 3", "28", "геометрия", 10));
-            isFavourite.add(false);
-            isLater.add(false);
-            isSolved.add(false);
-
-            problems.add(new Problem(7, "Посчитайте 25 + 3", "28", "алгебра", 10));
-            isFavourite.add(false);
-            isLater.add(false);
-            isSolved.add(false);
-
-            problems.add(new Problem(8, "Посчитайте 25 + 3", "28", "комбинаторика", 11));
-            isFavourite.add(false);
-            isLater.add(false);
-            isSolved.add(false);
-
-            problems.add(new Problem(9, "Посчитайте 25 + 3", "28", "комбинаторика", 10));
-            isFavourite.add(false);
-            isLater.add(false);
-            isSolved.add(false);
-
-            problems.add(new Problem(10, "Посчитайте 25 + 3", "28", "геометрия", 10));
-            isFavourite.add(false);
-            isLater.add(false);
-            isSolved.add(false);
-
-            problems.add(new Problem(11, "Посчитайте 25 + 3", "28", "алгебра", 8));
-            isFavourite.add(false);
-            isLater.add(false);
-            isSolved.add(false);
-
-            problems.add(new Problem(12, "Посчитайте 25 + 3", "28", "геометрия", 10));
-            isFavourite.add(false);
-            isLater.add(false);
-            isSolved.add(false);
-
-            problems.add(new Problem(13, "Посчитайте 25 + 3", "28", "геометрия", 9));
-            isFavourite.add(false);
-            isLater.add(false);
-            isSolved.add(false);
-
-            problems.add(new Problem(14, "Посчитайте 25 + 3", "28", "алгебра", 8));
-            isFavourite.add(false);
-            isLater.add(false);
-            isSolved.add(false);
+        if (dbProblems.size() == 0) {
+            dbProblems.addProblem(new Problem(1, "Найдите наименьшее натуральное число, кратное 99, в десятичной записи которого участвуют только чётные цифры.", "228888", "алгебра"));
+            dbProblems.addProblem(new Problem(3, "Найдите наименьшее натуральное число, кратное 99, в десятичной записи которого участвуют только чётные цифры.", "228888", "геометрия", 11));
+            dbProblems.addProblem(new Problem(2, "Найдите наименьшее натуральное число, кратное 99, в десятичной записи которого участвуют только чётные цифры.", "228888", "алгебра", 10));
         }
+
+        problems = dbProblems.getAllProblems();
+        for (Problem problem : problems) {
+            if (!problem.solved) {
+                continue;
+            }
+            //if (problem.topic = "алгебра")
+        }
+        Log.d("problem1", problems.get(0).topic);
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        this.finish();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 }
