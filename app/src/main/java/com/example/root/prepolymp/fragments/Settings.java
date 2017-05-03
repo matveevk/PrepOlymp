@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,12 @@ import android.widget.Toast;
 
 import com.example.root.prepolymp.R;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
+import static android.content.Context.MODE_PRIVATE;
+import static com.example.root.prepolymp.Start.NAMES_FILE_NAME;
 import static com.example.root.prepolymp.Storage.firstname;
 import static com.example.root.prepolymp.Storage.lastname;
 
@@ -46,18 +51,33 @@ public class Settings extends Fragment {
             public void onClick(View view) {
                 firstname = fname.getText().toString();
                 lastname = lname.getText().toString();
-                Toast.makeText(getActivity(), "Сохранено", Toast.LENGTH_SHORT).show();
                 NavigationView navigationView = (NavigationView) getActivity().findViewById(R.id.nav_view);
                 View header = navigationView.getHeaderView(0);
                 TextView tv = (TextView)header.findViewById(R.id.nav_text_view1);
                 tv.setText(firstname + " " + lastname);
+                writeNames();
+                Toast.makeText(getActivity(), "Сохранено", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public int screenWidth() {
-        DisplayMetrics dm = new DisplayMetrics();
-        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        return dm.widthPixels;
+    public void writeNames() {
+        OutputStreamWriter outputStreamWriter = null;
+        try {
+            outputStreamWriter = new OutputStreamWriter(getContext().openFileOutput(NAMES_FILE_NAME, MODE_PRIVATE));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            outputStreamWriter.write(firstname + "\n" + lastname);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                outputStreamWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

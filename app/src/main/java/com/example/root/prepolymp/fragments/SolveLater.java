@@ -24,6 +24,9 @@ import static com.example.root.prepolymp.Storage.problems;
 import static com.example.root.prepolymp.fragments.ProblemList.EXTRA;
 
 public class SolveLater extends Fragment {
+
+    public static ArrayAdapter<String> adapterMarked;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -59,7 +62,7 @@ public class SolveLater extends Fragment {
         } else {
             tv.setVisibility(View.GONE);
 
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
+             adapterMarked = new ArrayAdapter<String>(getActivity().getApplicationContext(),
                     R.layout.custom_textview, probText) {
                 @NonNull
                 @Override
@@ -70,7 +73,7 @@ public class SolveLater extends Fragment {
                 }
             };
 
-            listView.setAdapter(arrayAdapter);
+            listView.setAdapter(adapterMarked);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

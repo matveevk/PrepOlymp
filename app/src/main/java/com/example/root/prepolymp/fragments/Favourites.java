@@ -25,6 +25,9 @@ import static com.example.root.prepolymp.Storage.problems;
 import static com.example.root.prepolymp.fragments.ProblemList.EXTRA;
 
 public class Favourites extends Fragment {
+
+    public static ArrayAdapter<String> adapterFavourites;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -60,7 +63,7 @@ public class Favourites extends Fragment {
         } else {
             tv.setVisibility(View.GONE);
 
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
+            adapterFavourites = new ArrayAdapter<String>(getActivity().getApplicationContext(),
                                                             R.layout.custom_textview, probText) {
                 @NonNull
                 @Override
@@ -75,7 +78,7 @@ public class Favourites extends Fragment {
                     return tv;
                 }
             };
-            listView.setAdapter(arrayAdapter);
+            listView.setAdapter(adapterFavourites);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

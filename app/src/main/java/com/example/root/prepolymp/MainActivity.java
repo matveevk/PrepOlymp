@@ -22,6 +22,7 @@ import com.example.root.prepolymp.fragments.SolveLater;
 import com.example.root.prepolymp.fragments.Solved;
 import com.example.root.prepolymp.fragments.Stats;
 
+import static com.example.root.prepolymp.ProblemActivity.navHeaderUpdate;
 import static com.example.root.prepolymp.Storage.firstname;
 import static com.example.root.prepolymp.Storage.lastname;
 
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity
         View header = navigationView.getHeaderView(0);
         TextView tv = (TextView)header.findViewById(R.id.nav_text_view1);
         tv.setText(firstname + " " + lastname);
+        navHeaderUpdate();
 
         displaySelectedFragment(R.id.nav_problem_list);
     }

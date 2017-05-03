@@ -20,8 +20,17 @@ import android.widget.Toast;
 import com.example.root.prepolymp.fragments.ProblemList;
 import com.example.root.prepolymp.fragments.Stats;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
 import static com.example.root.prepolymp.MainActivity.navigationView;
+import static com.example.root.prepolymp.Start.ATTEMPTS_FILE_NAME;
 import static com.example.root.prepolymp.Storage.problems;
+import static com.example.root.prepolymp.fragments.Favourites.adapterFavourites;
+import static com.example.root.prepolymp.fragments.ProblemList.adapterAllProblems;
+import static com.example.root.prepolymp.fragments.SolveLater.adapterMarked;
+import static com.example.root.prepolymp.fragments.Solved.adapterSolved;
 
 public class ProblemActivity extends AppCompatActivity {
 
@@ -113,6 +122,7 @@ public class ProblemActivity extends AppCompatActivity {
                     addCor(problem.topic);
                     navHeaderUpdate();
                     dbProblems.updateProblem(problem);
+                    notifyAllAdapters();
                 } else {
                     checkResult.setTextColor(Color.RED);
                     checkResult.setText("Неверно!");
@@ -135,6 +145,24 @@ public class ProblemActivity extends AppCompatActivity {
             case "комбинаторика": ++Stats.cor_comb; break;
             case "геометрия": ++Stats.cor_geom; break;
         }
+
+        OutputStreamWriter outputStreamWriter = null;
+        try {
+            outputStreamWriter = new OutputStreamWriter(openFileOutput(ATTEMPTS_FILE_NAME, MODE_PRIVATE));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            outputStreamWriter.write(Stats.att_alg + "\n" + Stats.att_comb + "\n" + Stats.att_geom);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                outputStreamWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public int screenWidth() {
@@ -148,13 +176,13 @@ public class ProblemActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_problem_activity, menu);
 
-        if (problem.liked = true) {
+        if (problem.liked) {
             menu.findItem(R.id.add_to_favourites).setIcon(R.drawable.ic_menu_favourites_true);
         } else {
             menu.findItem(R.id.add_to_favourites).setIcon(R.drawable.ic_menu_favourites_false);
         }
 
-        if (problem.marked = true) {
+        if (problem.marked) {
             menu.findItem(R.id.add_to_later).setIcon(R.drawable.ic_add_to_later_true);
         } else {
             menu.findItem(R.id.add_to_later).setIcon(R.drawable.ic_add_to_later_false);
@@ -201,6 +229,7 @@ public class ProblemActivity extends AppCompatActivity {
                 onBackPressed();
                 return true;
         }
+        notifyAllAdapters();
         return super.onOptionsItemSelected(item);
     }
 
@@ -215,5 +244,12 @@ public class ProblemActivity extends AppCompatActivity {
         } else {
             tv.setText("Решено " + n + " задач");
         }
+    }
+
+    public static void notifyAllAdapters() {
+        adapterAllProblems.notifyDataSetChanged();
+        adapterFavourites.notifyDataSetChanged();
+        adapterMarked.notifyDataSetChanged();
+        adapterSolved.notifyDataSetChanged();
     }
 }

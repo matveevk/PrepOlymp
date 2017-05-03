@@ -26,6 +26,7 @@ import static com.example.root.prepolymp.Storage.problems;
 public class ProblemList extends Fragment {
 
     public static final String EXTRA = "ProblemList";
+    public static ArrayAdapter<String> adapterAllProblems;
 
     @Nullable
     @Override
@@ -53,7 +54,7 @@ public class ProblemList extends Fragment {
         }
 
         ListView listView = (ListView)view.findViewById(R.id.list_problems);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
+        adapterAllProblems = new ArrayAdapter<String>(getActivity().getApplicationContext(),
                                                     R.layout.custom_textview, probText) {
             @NonNull
             @Override
@@ -68,7 +69,7 @@ public class ProblemList extends Fragment {
                 return tv;
             }
         };
-        listView.setAdapter(arrayAdapter);
+        listView.setAdapter(adapterAllProblems);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
