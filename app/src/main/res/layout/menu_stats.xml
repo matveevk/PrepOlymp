@@ -9,61 +9,100 @@
     <TextView
         android:id="@+id/stats1"
         android:textColor="@android:color/black"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:text="TextView"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:text="Всего решено: "
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/stats2"
         android:textColor="@android:color/black"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginLeft="10dp"
+        android:text="Всего попыток: "
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/stats1" />
 
     <TextView
         android:id="@+id/stats3"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorAlg"
         android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:text="алгебра"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/stats2" />
 
     <TextView
         android:id="@+id/stats4"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorComb"
         android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:text="комбинаторика"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/stats3" />
 
     <TextView
         android:id="@+id/stats5"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorGeom"
         android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:text="геометрия"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/stats4" />
+
+    <TextView
+        android:id="@+id/stats6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/colorAlg"
+        android:text="алгебра"
+        app:layout_constraintTop_toBottomOf="@id/stats2"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"/>
+
+    <TextView
+        android:id="@+id/stats7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/colorComb"
+        android:text="комбинаторика"
+        app:layout_constraintTop_toBottomOf="@id/stats6"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"/>
+
+    <TextView
+        android:id="@+id/stats8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/colorGeom"
+        android:text="геометрия"
+        app:layout_constraintTop_toBottomOf="@id/stats7"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"/>
 
 </android.support.constraint.ConstraintLayout>

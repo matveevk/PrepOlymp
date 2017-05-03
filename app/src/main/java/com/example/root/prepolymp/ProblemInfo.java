@@ -29,6 +29,11 @@ public class ProblemInfo extends AppCompatActivity {
 
         TextView tv1 = (TextView)findViewById(R.id.problemNo);
         tv1.setText("Задача № " + problem.id);
+        switch(problem.topic) {
+            case "алгебра": tv1.setTextColor(getResources().getColor(R.color.colorAlg)); break;
+            case "комбинаторика": tv1.setTextColor(getResources().getColor(R.color.colorComb)); break;
+            case "геометрия": tv1.setTextColor(getResources().getColor(R.color.colorGeom)); break;
+        }
         TextView tv2 = (TextView)findViewById(R.id.problemForm);
         tv2.setText("Класс: " + problem.form);
         TextView tv3 = (TextView)findViewById(R.id.problemDiff);

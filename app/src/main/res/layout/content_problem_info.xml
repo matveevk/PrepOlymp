@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/horizontal_hl_2"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1"
+        app:layout_constraintGuide_percent="0.12"
         tools:layout_editor_absoluteY="57dp"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/horizontal_hl_3"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15"
+        app:layout_constraintGuide_percent="0.18"
         tools:layout_editor_absoluteY="85dp"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/horizontal_hl_4"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2"
+        app:layout_constraintGuide_percent="0.24"
         tools:layout_editor_absoluteY="114dp"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/horizontal_hl_5"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25"
+        app:layout_constraintGuide_percent="0.30"
         tools:layout_editor_absoluteY="142dp"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/horizontal_hl_6"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25"
+        app:layout_constraintGuide_percent="0.36"
         tools:layout_editor_absoluteY="142dp"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -86,8 +86,8 @@
         android:id="@+id/problemNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="@android:color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
         android:text="Номер задачи"
         app:layout_constraintBottom_toTopOf="@+id/horizontal_hl_2"
         app:layout_constraintLeft_toLeftOf="@+id/vertical_hl_1"

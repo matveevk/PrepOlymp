@@ -12,8 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.root.prepolymp.Problem;
 import com.example.root.prepolymp.ProblemActivity;
@@ -52,6 +55,23 @@ public class ProblemList extends Fragment {
             ss += "  " + s.form + " класс";
             probText.add(ss);
         }
+
+        Button button = (Button) getActivity().findViewById(R.id.applyGoToNum);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText editText = (EditText)getActivity().findViewById(R.id.insertGoToNum);
+                String s = editText.getText().toString();
+                int index = Integer.parseInt(s) - 1;
+                if (index < 0 || index >= problems.size()) {
+                    Toast.makeText(getContext(), "Такой задачи нет", Toast.LENGTH_LONG).show();
+                } else {
+                    Intent intent = new Intent(getActivity(), ProblemActivity.class);
+                    intent.putExtra(EXTRA, index);
+                    getActivity().startActivity(intent);
+                }
+            }
+        });
 
         ListView listView = (ListView)view.findViewById(R.id.list_problems);
         adapterAllProblems = new ArrayAdapter<String>(getActivity().getApplicationContext(),

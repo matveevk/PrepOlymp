@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         View header = navigationView.getHeaderView(0);
-        TextView tv = (TextView)header.findViewById(R.id.nav_text_view1);
+        TextView tv = (TextView) header.findViewById(R.id.nav_text_view1);
         tv.setText(firstname + " " + lastname);
         navHeaderUpdate();
 
@@ -81,7 +81,9 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame_layout_problems, new Settings());
+            fragmentTransaction.commit();
         }
 
         return super.onOptionsItemSelected(item);

@@ -3,11 +3,49 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/goToNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="30dp"
+            android:textSize="20dp"
+            android:text="Перейти к задаче № " />
+
+        <EditText
+            android:id="@+id/insertGoToNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="3"
+            android:textSize="18dp"
+            android:inputType="number"
+            android:backgroundTint="@color/colorPrimary"
+            android:textCursorDrawable="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/applyGoToNum"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:text="ок"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="368dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginTop="15dp"/>
+
     <ListView
         android:id="@+id/list_problems"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:dividerHeight="0dp"
         android:divider="@android:color/white"/>
 </LinearLayout>

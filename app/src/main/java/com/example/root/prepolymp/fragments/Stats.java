@@ -35,20 +35,29 @@ public class Stats extends Fragment {
         getActivity().setTitle("Статистика");
 
         TextView tv1 = (TextView)view.findViewById(R.id.stats1);
-        tv1.setText("Решено " + totalCor());
+        tv1.setText("Всего решено: " + totalCor());
 
         TextView tv2 = (TextView)view.findViewById(R.id.stats2);
-        tv2.setText("Израсходовано " + totalAtt() + " попыток");
+        tv2.setText("Всего попыток: " + totalAtt());
 
 
-        TextView tv3 = (TextView)view.findViewById(R.id.stats3);
-        tv3.setText(Html.fromHtml("Алгебра: <font color=#C162EA>" + cor_alg + "</font> из <font color=#0000FF>" + att_alg + "</font> попыток."));
+        TextView tv6 = (TextView)view.findViewById(R.id.stats6);
+        tv6.setText(Html.fromHtml("<font color=" + R.color.colorAlg + ">" + cor_alg
+                + "</font> из <font color=" + R.color.colorAlg + ">" + att_alg
+                + "</font> попыток, " + "<font color=" + R.color.colorAlg + ">"
+                + (att_alg > 0 ? 100 * cor_alg / att_alg : 0) + "%"));
 
-        TextView tv4 = (TextView)view.findViewById(R.id.stats4);
-        tv4.setText("Комбинаторика: " + cor_comb + " из " + att_comb + " попыток.");
+        TextView tv7 = (TextView)view.findViewById(R.id.stats7);
+        tv7.setText(Html.fromHtml("<font color=" + R.color.colorComb + ">" + cor_comb
+                + "</font> из <font color=" + R.color.colorComb + ">" + att_comb
+                + "</font> попыток, " + "<font color=" + R.color.colorComb + ">"
+                + (att_comb > 0 ? 100 * cor_comb / att_comb : 0) + "%"));
 
-        TextView tv5 = (TextView)view.findViewById(R.id.stats5);
-        tv5.setText("Геометрия: " + cor_geom + " из " + att_geom + " попыток.");
+        TextView tv8 = (TextView)view.findViewById(R.id.stats8);
+        tv8.setText(Html.fromHtml("<font color=" + R.color.colorGeom + ">" + cor_geom
+                + "</font> из <font color=" + R.color.colorGeom + ">" + att_geom
+                + "</font> попыток, " + "<font color=" + R.color.colorGeom + ">"
+                + (att_geom > 0 ? 100 * cor_geom / att_geom : 0) + "%"));
     }
 
     public int totalAtt() {
