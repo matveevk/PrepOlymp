@@ -83,7 +83,8 @@ public class Favourites extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Intent intent = new Intent(getActivity(), ProblemActivity.class);
-                    intent.putExtra(EXTRA, i);
+                    // TODO: 5/3/17 if change probText change following line
+                    intent.putExtra(EXTRA, probText.get(i).charAt(2) - '1');
                     getActivity().startActivity(intent);
                 }
             });

@@ -137,14 +137,6 @@ public class ProblemActivity extends AppCompatActivity {
             case "комбинаторика": ++Stats.att_comb; break;
             case "геометрия": ++Stats.att_geom; break;
         }
-    }
-
-    public void addCor(String s) {
-        switch (s) {
-            case "алгебра": ++Stats.cor_alg; break;
-            case "комбинаторика": ++Stats.cor_comb; break;
-            case "геометрия": ++Stats.cor_geom; break;
-        }
 
         OutputStreamWriter outputStreamWriter = null;
         try {
@@ -162,6 +154,14 @@ public class ProblemActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void addCor(String s) {
+        switch (s) {
+            case "алгебра": ++Stats.cor_alg; break;
+            case "комбинаторика": ++Stats.cor_comb; break;
+            case "геометрия": ++Stats.cor_geom; break;
         }
     }
 

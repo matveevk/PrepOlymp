@@ -36,7 +36,7 @@ public class Start extends AppCompatActivity {
         DBManager dbProblems = new DBManager(this);
         dbProblems.getWritableDatabase();
 
-        if (dbProblems.size() <= 3) { // TODO
+        if (dbProblems.size() == 0) {
             dbProblems.addProblem(new Problem(1, "Найдите наименьшее натуральное число, кратное 99, в десятичной записи которого участвуют только чётные цифры.", "228888", "алгебра"));
             dbProblems.addProblem(new Problem(3, "Найдите наименьшее натуральное число, кратное 99, в десятичной записи которого участвуют только чётные цифры.", "228888", "геометрия", 11));
             dbProblems.addProblem(new Problem(2, "Найдите наименьшее натуральное число, кратное 99, в десятичной записи которого участвуют только чётные цифры.", "228888", "алгебра", 10));
