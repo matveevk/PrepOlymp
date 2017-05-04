@@ -73,6 +73,7 @@ public class Favourites extends Fragment {
                         tv.setText(Html.fromHtml(probText.get(position)) + " (решено)");
                         tv.setTextColor(Color.GRAY);
                     } else {
+                        tv.setTextColor(Color.BLACK);
                         tv.setText(Html.fromHtml(probText.get(position)));
                     }
                     return tv;

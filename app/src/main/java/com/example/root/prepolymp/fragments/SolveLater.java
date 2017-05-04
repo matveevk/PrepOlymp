@@ -1,6 +1,7 @@
 package com.example.root.prepolymp.fragments;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -68,6 +69,7 @@ public class SolveLater extends Fragment {
                 @Override
                 public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                     TextView tv = (TextView)super.getView(position, convertView, parent);
+                    tv.setTextColor(Color.BLACK);
                     tv.setText(Html.fromHtml(probText.get(position)));
                     return tv;
                 }
