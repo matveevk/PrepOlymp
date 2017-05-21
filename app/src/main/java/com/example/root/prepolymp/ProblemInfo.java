@@ -40,7 +40,14 @@ public class ProblemInfo extends AppCompatActivity {
         tv3.setText("Сложность: " + problem.diff);
         TextView tv4 = (TextView)findViewById(R.id.problemTopic);
         tv4.setText("Тема: " + problem.topic);
-
+        TextView tv6 = (TextView)findViewById(R.id.problemOrigins);
+        tv6.setWidth(screenWidth() / 10 * 9);
+        tv6.setText("Источник: " + problem.origins);
+        switch(problem.topic) {
+            case "алгебра": tv6.setTextColor(getResources().getColor(R.color.colorAlg)); break;
+            case "комбинаторика": tv6.setTextColor(getResources().getColor(R.color.colorComb)); break;
+            case "геометрия": tv6.setTextColor(getResources().getColor(R.color.colorGeom)); break;
+        }
     }
 
     public int screenWidth() {
