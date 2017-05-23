@@ -20,7 +20,7 @@
             android:title="Решённые" />
         <item
             android:id="@+id/nav_random_contest"
-            android:icon="@drawable/ic_menu_solved"
+            android:icon="@drawable/ic_contest_dots_24dp"
             android:title="Порешать" />
     </group>
 
