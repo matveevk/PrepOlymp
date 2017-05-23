@@ -42,8 +42,10 @@ public class SolveLater extends Fragment {
         TextView tv = (TextView) view.findViewById(R.id.later_no_problems);
 
         final ArrayList<String> probText = new ArrayList<>();
+        final ArrayList<Integer> probNums = new ArrayList<>();
         for (Problem s : problems) {
             if (s.marked && !s.solved) {
+                probNums.add(s.id - 1);
                 String ss = "№ " + s.id + " - ";
                 if (s.topic.equals("алгебра")) {
                     ss += ("<font size=3 color=#C162EA>алг</font>");
@@ -81,7 +83,7 @@ public class SolveLater extends Fragment {
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Intent intent = new Intent(getActivity(), ProblemActivity.class);
                     // TODO: 5/3/17 if change probText change following line
-                    intent.putExtra(EXTRA, probText.get(i).charAt(2) - '1');
+                    intent.putExtra(EXTRA, probNums.get(i));
                     getActivity().startActivity(intent);
                 }
             });

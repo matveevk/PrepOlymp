@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import com.example.root.prepolymp.fragments.About;
 import com.example.root.prepolymp.fragments.Favourites;
 import com.example.root.prepolymp.fragments.ProblemList;
+import com.example.root.prepolymp.fragments.RandomContest;
 import com.example.root.prepolymp.fragments.Settings;
 import com.example.root.prepolymp.fragments.SolveLater;
 import com.example.root.prepolymp.fragments.Solved;
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity
         View header = navigationView.getHeaderView(0);
         TextView tv = (TextView) header.findViewById(R.id.nav_text_view1);
         tv.setText(firstname + " " + lastname);
+
         navHeaderUpdate();
 
         displaySelectedFragment(R.id.nav_problem_list);
@@ -57,6 +60,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+        Log.d("ddd", "1");
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -68,6 +72,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+        Log.d("ddd", "2");
         getMenuInflater().inflate(R.menu.nav_drawer_problems, menu);
         return true;
     }
@@ -79,6 +84,7 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        Log.d("ddd", "3");
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -95,6 +101,7 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        Log.d("ddd", "4");
         displaySelectedFragment(id);
 
         return true;
@@ -102,6 +109,7 @@ public class MainActivity extends AppCompatActivity
 
     private void displaySelectedFragment(int id) {
 
+        Log.d("ddd", "5");
         Fragment fragment = null;
 
         switch (id) {
@@ -116,6 +124,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_solved:
                 fragment = new Solved();
+                break;
+            case R.id.nav_random_contest:
+                fragment = new RandomContest();
                 break;
             case R.id.nav_stats:
                 fragment = new Stats();

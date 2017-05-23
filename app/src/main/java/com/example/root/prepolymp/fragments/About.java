@@ -45,7 +45,7 @@ public class About extends Fragment {
         TextView tv7 = (TextView)view.findViewById(R.id.menu_about7);
         tv7.setWidth(screenWidth() / 100 * 88);
         String s7 = "Приложение PrepOlymp. \n" +
-                "Версия 0 (beta).\n" +
+                "Версия 0 (alpha).\n" +
                 "(с) 2017 Матвеев Константин. ";
         tv7.setText(s7);
     }

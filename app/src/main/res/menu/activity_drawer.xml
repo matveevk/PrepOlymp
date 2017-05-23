@@ -18,6 +18,10 @@
             android:id="@+id/nav_solved"
             android:icon="@drawable/ic_menu_solved"
             android:title="Решённые" />
+        <item
+            android:id="@+id/nav_random_contest"
+            android:icon="@drawable/ic_menu_solved"
+            android:title="Порешать" />
     </group>
 
     <item android:title="Аккаунт">
@@ -29,7 +33,7 @@
                 android:checkable="true" />
             <item
                 android:id="@+id/nav_settings"
-                android:icon="@drawable/ic_menu_settings"
+                android:icon="@drawable/ic_menu_settings_24dp"
                 android:title="Настройки"
                 android:checkable="true"  />
             <item

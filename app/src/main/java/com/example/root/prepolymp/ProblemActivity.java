@@ -210,7 +210,6 @@ public class ProblemActivity extends AppCompatActivity {
                 break;
 
             case R.id.add_to_later:
-                // TODO: 4/10/17 change the Favourites listview
                 if (problem.marked) {
                     problem.marked = false;
                     item.setIcon(R.drawable.ic_add_to_later_false);
