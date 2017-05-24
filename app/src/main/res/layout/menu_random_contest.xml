@@ -17,14 +17,29 @@
         android:paddingTop="30dp"
         android:paddingBottom="20dp">
 
-        <Button
+        <RelativeLayout
             android:id="@+id/contest_gen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Новый контест"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="25dp"/>
+            android:layout_centerHorizontal="true">
+
+            <Spinner
+                android:id="@+id/random_contest_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/random_contest_array"
+                android:prompt="@string/random_contest_prompt" />
+
+            <Button
+                android:id="@+id/contest_gen_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Новый контест"
+                android:gravity="center"
+                android:layout_marginBottom="25dp"
+                android:layout_toRightOf="@id/random_contest_spinner"/>
+
+        </RelativeLayout>
 
         <android.support.v7.widget.CardView
             android:id="@+id/problemCardView1"

@@ -8,6 +8,8 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.root.prepolymp.Problem;
@@ -29,7 +31,17 @@ public class RandomContest extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle("Порешать");
+        getActivity().setTitle("Контест");
+
+        Button button = (Button)getActivity().findViewById(R.id.contest_gen_btn);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Spinner spinner = (Spinner)getActivity().findViewById(R.id.random_contest_spinner);
+                int n = spinner.getSelectedItemPosition() + 1;
+                getContest(n);
+            }
+        });
 
         getContest(5);
     }
