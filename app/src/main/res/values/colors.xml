@@ -6,4 +6,7 @@
     <color name="colorAlg">#C162EA</color>
     <color name="colorComb">#499351</color>
     <color name="colorGeom">#2675BF</color>
+    <color name="colorAlgLight">#FFD6E0</color>
+    <color name="colorCombLight">#E2FFE3</color>
+    <color name="colorGeomLight">#D1DEFF</color>
 </resources>
