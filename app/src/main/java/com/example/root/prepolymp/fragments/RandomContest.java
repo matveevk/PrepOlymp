@@ -10,6 +10,11 @@ import android.view.ViewGroup;
 
 import com.example.root.prepolymp.R;
 
+import java.util.ArrayList;
+import java.util.Random;
+
+import static com.example.root.prepolymp.Storage.problems;
+
 public class RandomContest extends Fragment {
 
     @Nullable
@@ -23,6 +28,27 @@ public class RandomContest extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Порешать");
 
-        CardView cardView = (CardView)getActivity().findViewById(R.id.cardView);
+        getContest(5);
+    }
+
+    private void getContest(int n) {
+        ArrayList<CardView> cardViews = new ArrayList<>();
+        cardViews.add((CardView)getActivity().findViewById(R.id.problemCardView1));
+        cardViews.add((CardView)getActivity().findViewById(R.id.problemCardView2));
+        cardViews.add((CardView)getActivity().findViewById(R.id.problemCardView3));
+        cardViews.add((CardView)getActivity().findViewById(R.id.problemCardView4));
+        cardViews.add((CardView)getActivity().findViewById(R.id.problemCardView5));
+        cardViews.add((CardView)getActivity().findViewById(R.id.problemCardView6));
+
+        ArrayList<Integer> randNums = new ArrayList<>();
+        Random random = new Random();
+        while (randNums.size() != n) {
+            int k = random.nextInt(problems.size()) + 1;
+            if (!randNums.contains(k)) {
+                randNums.add(k);
+            }
+        }
+
+
     }
 }
