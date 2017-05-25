@@ -1,9 +1,10 @@
 package com.example.root.prepolymp.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.root.prepolymp.Problem;
+import com.example.root.prepolymp.ProblemActivity;
 import com.example.root.prepolymp.R;
 
 import java.util.ArrayList;
@@ -21,6 +23,8 @@ import java.util.Random;
 import static com.example.root.prepolymp.Storage.problems;
 
 public class RandomContest extends Fragment {
+
+    public static final String RANDOM_CONTEST_INTENT = "RANDOM_CONTEST_INTENT";
 
     @Nullable
     @Override
@@ -38,7 +42,7 @@ public class RandomContest extends Fragment {
             @Override
             public void onClick(View v) {
                 Spinner spinner = (Spinner)getActivity().findViewById(R.id.random_contest_spinner);
-                int n = spinner.getSelectedItemPosition() + 1;
+                int n = spinner.getSelectedItem().toString().charAt(spinner.getSelectedItem().toString().length() - 1) - '0';
                 getContest(n);
             }
         });
@@ -47,32 +51,33 @@ public class RandomContest extends Fragment {
     }
 
     private void getContest(int n) {
-        ArrayList<CardView> cardViews = new ArrayList<>();
-        cardViews.add((CardView)getActivity().findViewById(R.id.problemCardView1));
-        cardViews.add((CardView)getActivity().findViewById(R.id.problemCardView2));
-        cardViews.add((CardView)getActivity().findViewById(R.id.problemCardView3));
-        cardViews.add((CardView)getActivity().findViewById(R.id.problemCardView4));
-        cardViews.add((CardView)getActivity().findViewById(R.id.problemCardView5));
-        cardViews.add((CardView)getActivity().findViewById(R.id.problemCardView6));
-        if (n > cardViews.size()) {
-            n = cardViews.size();
+        int maxSize = 6;
+
+        ArrayList<Pair<CardView, Integer>> cardViewsHelper = new ArrayList<>(), cardViews = new ArrayList<>();
+        cardViewsHelper.add(Pair.create((CardView)getActivity().findViewById(R.id.problemCardView1), 0));
+        cardViewsHelper.add(Pair.create((CardView)getActivity().findViewById(R.id.problemCardView2), 0));
+        cardViewsHelper.add(Pair.create((CardView)getActivity().findViewById(R.id.problemCardView3), 0));
+        cardViewsHelper.add(Pair.create((CardView)getActivity().findViewById(R.id.problemCardView4), 0));
+        cardViewsHelper.add(Pair.create((CardView)getActivity().findViewById(R.id.problemCardView5), 0));
+        cardViewsHelper.add(Pair.create((CardView)getActivity().findViewById(R.id.problemCardView6), 0));
+
+        if (n > maxSize) {
+            n = maxSize;
         }
         ArrayList<Integer> randNums = new ArrayList<>();
         Random random = new Random();
         while (randNums.size() != n) {
             int k = random.nextInt(problems.size());
             if (!randNums.contains(k)) {
+                cardViews.add(Pair.create(cardViewsHelper.get(randNums.size()).first, k));
                 randNums.add(k);
             }
         }
-        for (int i = cardViews.size() - 1; i >= n; --i) {
-            cardViews.get(i).setVisibility(View.GONE);
-        }
 
-        ArrayList<ArrayList<TextView>> cardContent = getCardContentList(n);
+        ArrayList<ArrayList<TextView>> cardContent = getCardContentList(maxSize);
 
-        for (int i = 0; i < randNums.size(); ++i) {
-            Problem problem = problems.get(randNums.get(i));
+        for (int i = 0; i < maxSize; ++i) {
+            Problem problem = problems.get(randNums.get(i < n ? i : 0));
             cardContent.get(i).get(0).setText("Задача № " + problem.id);
             cardContent.get(i).get(1).setText(problem.topic + ", класс " + problem.form + ", сложность " + problem.diff);
             if (problem.text.length() > 80) {
@@ -86,7 +91,27 @@ public class RandomContest extends Fragment {
                 case "комбинаторика": color = R.color.colorCombLight; break;
                 case "геометрия": color = R.color.colorGeomLight; break;
             }
-            cardViews.get(i).setCardBackgroundColor(ContextCompat.getColor(getActivity(), color));
+            cardViewsHelper.get(i).first.setCardBackgroundColor(getResources().getColor(color));
+        }
+
+        for (int i = maxSize - 1; i >= n; --i) {
+            cardViewsHelper.get(i).first.setVisibility(View.GONE);
+            for (TextView tv : cardContent.get(i)) {
+                tv.setVisibility(View.GONE);
+            }
+        }
+
+        for (int i = 0; i < cardViews.size(); ++i) {
+            final int j = i;
+            final int problemNo = cardViews.get(j).second;
+            cardViews.get(i).first.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), ProblemActivity.class);
+                    intent.putExtra(RANDOM_CONTEST_INTENT, problemNo);
+                    getActivity().startActivity(intent);
+                }
+            });
         }
     }
 

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.root.prepolymp.fragments.ProblemList;
+import com.example.root.prepolymp.fragments.RandomContest;
 import com.example.root.prepolymp.fragments.Stats;
 
 import java.io.FileNotFoundException;
@@ -47,7 +49,8 @@ public class ProblemActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int i = intent.getIntExtra(ProblemList.EXTRA, -1);
-
+        i = intent.getIntExtra(RandomContest.RANDOM_CONTEST_INTENT, i);
+        Log.d("aa", "" + i);
         problem = problems.get(i);
 
         setTitle("Задача № " + problem.id);
