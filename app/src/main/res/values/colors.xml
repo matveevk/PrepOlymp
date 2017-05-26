@@ -2,11 +2,16 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#3F51B5</color>
     <color name="colorAlg">#C162EA</color>
     <color name="colorComb">#499351</color>
     <color name="colorGeom">#2675BF</color>
+    <!-- v.1
     <color name="colorAlgLight">#FFD6E0</color>
+    <color name="colorAlgLight">#fce5fb</color>
+    <color name="colorAlgLight">#f9e5f8</color>
+    -->
+    <color name="colorAlgLight">#ffeafd</color>
     <color name="colorCombLight">#E2FFE3</color>
     <color name="colorGeomLight">#D1DEFF</color>
 </resources>

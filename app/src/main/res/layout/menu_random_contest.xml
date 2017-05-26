@@ -26,9 +26,7 @@
             <Spinner
                 android:id="@+id/random_contest_spinner"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:entries="@array/random_contest_array"
-                android:prompt="@string/random_contest_prompt" />
+                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/contest_gen_btn"
@@ -65,7 +63,7 @@
                     android:textSize="22sp"
                     android:text="Задача №"
                     android:textColor="@android:color/black"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/cv1_tv2"
@@ -79,7 +77,7 @@
                     android:id="@+id/cv1_tv3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:text="Условие"
                     android:textColor="@android:color/black"
                     android:layout_below="@+id/cv1_tv2"/>
@@ -126,7 +124,7 @@
                     android:id="@+id/cv2_tv3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:text="Условие"
                     android:textColor="@android:color/black"
                     android:layout_below="@+id/cv2_tv2"/>
@@ -173,7 +171,7 @@
                     android:id="@+id/cv3_tv3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:text="Условие"
                     android:textColor="@android:color/black"
                     android:layout_below="@+id/cv3_tv2"/>
@@ -220,7 +218,7 @@
                     android:id="@+id/cv4_tv3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:text="Условие"
                     android:textColor="@android:color/black"
                     android:layout_below="@+id/cv4_tv2"/>
@@ -267,7 +265,7 @@
                     android:id="@+id/cv5_tv3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:text="Условие"
                     android:textColor="@android:color/black"
                     android:layout_below="@+id/cv5_tv2"/>
@@ -315,7 +313,7 @@
                     android:id="@+id/cv6_tv3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:text="Условие"
                     android:textColor="@android:color/black"
                     android:layout_below="@+id/cv6_tv2"/>

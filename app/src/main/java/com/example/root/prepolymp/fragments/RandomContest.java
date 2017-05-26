@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -37,6 +38,11 @@ public class RandomContest extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Контест");
+
+        Spinner spinner = (Spinner)getActivity().findViewById(R.id.random_contest_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.random_contest_array, R.layout.spinner_random_contest);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
         Button button = (Button)getActivity().findViewById(R.id.contest_gen_btn);
         button.setOnClickListener(new View.OnClickListener() {
@@ -81,13 +87,21 @@ public class RandomContest extends Fragment {
         for (int i = 0; i < maxSize; ++i) {
             Problem problem = problems.get(randNums.get(i < n ? i : 0));
             cardContent.get(i).get(0).setText("Задача № " + problem.id);
+            switch (problem.topic) {
+                case "алгебра": cardContent.get(i).get(0).setTextColor(getActivity().getResources().getColor(R.color.colorAlg)); break;
+                case "комбинаторика": cardContent.get(i).get(0).setTextColor(getActivity().getResources().getColor(R.color.colorComb)); break;
+                case "геометрия": cardContent.get(i).get(0).setTextColor(getActivity().getResources().getColor(R.color.colorGeom)); break;
+            }
+
             cardContent.get(i).get(1).setText(problem.topic + ", класс " + problem.form + ", сложность " + problem.diff);
+
             if (problem.text.length() > 80) {
                 cardContent.get(i).get(2).setText(problem.text.substring(0, 80) + "...");
             } else {
                 cardContent.get(i).get(2).setText(problem.text);
             }
-            int color = 0;
+
+            int color = android.R.color.white;
             switch (problem.topic) {
                 case "алгебра": color = R.color.colorAlgLight; break;
                 case "комбинаторика": color = R.color.colorCombLight; break;
