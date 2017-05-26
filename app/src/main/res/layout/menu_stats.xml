@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:text="алгебра"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/stats2" />
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:text="комбинаторика"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/stats3" />
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:text="геометрия"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/stats4" />

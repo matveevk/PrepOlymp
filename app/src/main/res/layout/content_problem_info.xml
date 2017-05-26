@@ -6,81 +6,63 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.root.prepolymp.ProblemInfo"
-    tools:showIn="@layout/activity_problem_info"
-    tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:showIn="@layout/activity_problem_info" >
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/vertical_hl_1"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="19dp" />
+        app:layout_constraintGuide_percent="0.05" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/vertical_hl_2"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="365dp" />
+        app:layout_constraintGuide_percent="0.95" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/horizontal_hl_1"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.05"
-        tools:layout_editor_absoluteY="29dp"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintGuide_percent="0.05" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/horizontal_hl_2"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.12"
-        tools:layout_editor_absoluteY="57dp"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintGuide_percent="0.12" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/horizontal_hl_3"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.18"
-        tools:layout_editor_absoluteY="85dp"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintGuide_percent="0.18" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/horizontal_hl_4"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.24"
-        tools:layout_editor_absoluteY="114dp"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintGuide_percent="0.24" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/horizontal_hl_5"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.30"
-        tools:layout_editor_absoluteY="142dp"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintGuide_percent="0.30" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/horizontal_hl_6"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.36"
-        tools:layout_editor_absoluteY="142dp"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintGuide_percent="0.36" />
 
     <TextView
         android:id="@+id/problemNo"
