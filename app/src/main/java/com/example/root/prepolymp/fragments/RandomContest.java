@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.util.Pair;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,8 @@ public class RandomContest extends Fragment {
             @Override
             public void onClick(View v) {
                 Spinner spinner = (Spinner)getActivity().findViewById(R.id.random_contest_spinner);
-                int n = spinner.getSelectedItem().toString().charAt(spinner.getSelectedItem().toString().length() - 1) - '0';
+                int n = spinner.getSelectedItem().toString().charAt(0) - '0';
+                Log.d("bbbbbbb", spinner.getSelectedItem().toString());
                 getContest(n);
             }
         });
@@ -91,13 +93,20 @@ public class RandomContest extends Fragment {
                 case "комбинаторика": color = R.color.colorCombLight; break;
                 case "геометрия": color = R.color.colorGeomLight; break;
             }
-            cardViewsHelper.get(i).first.setCardBackgroundColor(getResources().getColor(color));
+            cardViewsHelper.get(i).first.setCardBackgroundColor(getActivity().getResources().getColor(color));
         }
 
         for (int i = maxSize - 1; i >= n; --i) {
             cardViewsHelper.get(i).first.setVisibility(View.GONE);
             for (TextView tv : cardContent.get(i)) {
                 tv.setVisibility(View.GONE);
+            }
+        }
+
+        for (int i = 0; i < n; ++i) {
+            cardViewsHelper.get(i).first.setVisibility(View.VISIBLE);
+            for (TextView tv : cardContent.get(i)) {
+                tv.setVisibility(View.VISIBLE);
             }
         }
 
