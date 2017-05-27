@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_problem_list_like_11"
+        android:title="Убрать из понравившихся" />
+    <item
+        android:id="@+id/menu_problem_list_later_11"
+        android:title="Убрать из отложенных" />
+</menu>

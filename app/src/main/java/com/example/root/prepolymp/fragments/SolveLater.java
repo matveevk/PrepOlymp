@@ -7,13 +7,18 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Html;
+import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.root.prepolymp.Problem;
 import com.example.root.prepolymp.ProblemActivity;
@@ -28,6 +33,11 @@ public class SolveLater extends Fragment {
 
     public static ArrayAdapter<String> adapterMarked;
 
+    int longClickPos = 0;
+
+    ArrayList<String> probText = null;
+    ArrayList<Integer> probNums = null;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -41,8 +51,8 @@ public class SolveLater extends Fragment {
         ListView listView = (ListView) view.findViewById(R.id.list_later);
         TextView tv = (TextView) view.findViewById(R.id.later_no_problems);
 
-        final ArrayList<String> probText = new ArrayList<>();
-        final ArrayList<Integer> probNums = new ArrayList<>();
+        probText = new ArrayList<>();
+        probNums = new ArrayList<>();
         for (Problem s : problems) {
             if (s.marked && !s.solved) {
                 probNums.add(s.id - 1);
@@ -87,6 +97,53 @@ public class SolveLater extends Fragment {
                     getActivity().startActivity(intent);
                 }
             });
+
+            listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    longClickPos = probNums.get(position);
+                    return false;
+                }
+            });
+
+            registerForContextMenu(listView);
         }
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getActivity().getMenuInflater();
+        Problem problem = problems.get(longClickPos);
+        boolean liked = problem.liked, latered = problem.marked;
+        if (liked && latered) {
+            inflater.inflate(R.menu.menu_problem_list_11, menu);
+        } else if (liked) {
+            inflater.inflate(R.menu.menu_problem_list_10, menu);
+        } else if (latered) {
+            inflater.inflate(R.menu.menu_problem_list_01, menu);
+        } else {
+            inflater.inflate(R.menu.menu_problem_list_00, menu);
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        Problem problem = problems.get(longClickPos);
+        Log.d("id", "" + problem.id);
+        switch(item.getItemId()) {
+            case R.id.menu_problem_list_like_00: problem.liked = true; Toast.makeText(getActivity(), "Добавлено в понравившиеся", Toast.LENGTH_LONG).show(); break;
+            case R.id.menu_problem_list_like_01: problem.liked = true; Toast.makeText(getActivity(), "Добавлено в понравившиеся", Toast.LENGTH_LONG).show(); break;
+            case R.id.menu_problem_list_like_10: problem.liked = false; Toast.makeText(getActivity(), "Удалено из понравившихся", Toast.LENGTH_LONG).show(); break;
+            case R.id.menu_problem_list_like_11: problem.liked = false; Toast.makeText(getActivity(), "Удалено из понравившихся", Toast.LENGTH_LONG).show(); break;
+
+            case R.id.menu_problem_list_later_00: if (problem.solved) Toast.makeText(getActivity(), "Нельзя отложить решённую задачу", Toast.LENGTH_LONG).show(); else {problem.marked = true; Toast.makeText(getActivity(), "Отложено", Toast.LENGTH_SHORT).show();} break;
+            case R.id.menu_problem_list_later_01: problem.marked = false; probText.remove(info.position); probNums.remove(info.position); Toast.makeText(getActivity(), "Убрано из отложенных", Toast.LENGTH_LONG).show(); break;
+            case R.id.menu_problem_list_later_10: if (problem.solved) Toast.makeText(getActivity(), "Нельзя отложить решённую задачу", Toast.LENGTH_LONG).show(); else {problem.marked = true; Toast.makeText(getActivity(), "Отложено", Toast.LENGTH_SHORT).show();} break;
+            case R.id.menu_problem_list_later_11: problem.marked = false; probText.remove(info.position); probNums.remove(info.position); Toast.makeText(getActivity(), "Убрано из отложенных", Toast.LENGTH_LONG).show(); break;
+        }
+        adapterMarked.notifyDataSetChanged();
+        return super.onContextItemSelected(item);
     }
 }

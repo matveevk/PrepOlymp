@@ -88,7 +88,7 @@ public class RandomContest extends Fragment {
             Problem problem = problems.get(randNums.get(i < n ? i : 0));
             cardContent.get(i).get(0).setText("Задача № " + problem.id);
             switch (problem.topic) {
-                case "алгебра": cardContent.get(i).get(0).setTextColor(getActivity().getResources().getColor(R.color.colorAlg)); break;
+                case "алгебра": cardContent.get(i).get(0).setTextColor(getActivity().getResources().getColor(R.color.colorAlgRandomContest)); break;
                 case "комбинаторика": cardContent.get(i).get(0).setTextColor(getActivity().getResources().getColor(R.color.colorComb)); break;
                 case "геометрия": cardContent.get(i).get(0).setTextColor(getActivity().getResources().getColor(R.color.colorGeom)); break;
             }
