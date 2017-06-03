@@ -9,7 +9,7 @@
     app:theme="@style/AppTheme.NoActionBar"
     android:orientation="vertical">
 
-    <TextView
+    <com.example.root.prepolymp.AutoResizeTextView
         android:id="@+id/problemText"
         android:layout_width="323dp"
         android:layout_height="242dp"

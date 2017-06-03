@@ -93,7 +93,7 @@ public class ProblemActivity extends AppCompatActivity {
     }
 
     public void showProblem(Problem problem) {
-        TextView problemText = (TextView)findViewById(R.id.problemText);
+        AutoResizeTextView problemText = (AutoResizeTextView) findViewById(R.id.problemText);
         problemText.setText(problem.text);
         TextView problemInfo = (TextView)findViewById(R.id.problemInfo);
         problemInfo.setText(getString(R.string.problem_data, problem.id, problem.form, problem.diff));
