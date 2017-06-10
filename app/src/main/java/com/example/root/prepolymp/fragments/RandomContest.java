@@ -76,6 +76,9 @@ public class RandomContest extends Fragment {
         Random random = new Random();
         while (randNums.size() != n) {
             int k = random.nextInt(problems.size());
+            if (problems.get(k).solved) {
+                continue;
+            }
             if (!randNums.contains(k)) {
                 cardViews.add(Pair.create(cardViewsHelper.get(randNums.size()).first, k));
                 randNums.add(k);
@@ -84,8 +87,8 @@ public class RandomContest extends Fragment {
 
         ArrayList<ArrayList<TextView>> cardContent = getCardContentList(maxSize);
 
-        for (int i = 0; i < maxSize; ++i) {
-            Problem problem = problems.get(randNums.get(i < n ? i : 0));
+        for (int i = 0; i < n; ++i) {
+            Problem problem = problems.get(randNums.get(i));
             cardContent.get(i).get(0).setText("Задача № " + problem.id);
             switch (problem.topic) {
                 case "алгебра": cardContent.get(i).get(0).setTextColor(getActivity().getResources().getColor(R.color.colorAlgRandomContest)); break;
